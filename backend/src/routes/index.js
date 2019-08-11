@@ -4,11 +4,11 @@ const appRouter = express.Router()
 const bodyParser = require('body-parser')
 
 const cors = require('cors')
-const lightRouter= require('./light')
-const soundRouter= require('./sound')
-const tvRouter= require('./tv')
-const curtainRouter= require('./curtain')
-const cameraRouter= require('./camera')
+const lightRouter= require('./lightRoute')
+const soundRouter= require('./soundRoute')
+const tvRouter= require('./tvRoute')
+const curtainRouter= require('./curtainRoute')
+const cameraRouter= require('./cameraRoute')
 
 
 appRouter.use(cors())

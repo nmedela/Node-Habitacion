@@ -17,7 +17,8 @@ class Light {
     }
 
     run() {
-        var process = spawn('python2.7', ["/usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py ", this.id, this.intensity]);
+        console.log("Se ejecuto comando para luz ", this.id, " con intensidad ", this.intensity)
+        // var process = spawn('python2.7', ["/usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py ", this.id, this.intensity]);
 
     }
 

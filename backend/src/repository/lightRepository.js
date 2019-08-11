@@ -1,16 +1,28 @@
 const { Light } = require('./../domain/light')
-const idMain = 0
+var idMain = 0
 class LightRepository {
     constructor() {
-        this.light = []
+        this.lights = []
     }
 
     create() {
         const newLight = new Light()
         ++idMain
         newLight.id = idMain
-        newLight.intensity = 35
-        this.light.push(newLight)
+        newLight.intensity = 20
+        this.lights.push(newLight)
+    }
+    async update(newLight) {
+        this.lights = this.lights.filter(light => light.id !== newLight.id)
+        this.lights.push(newLight)
+        return newLight
+    }
+
+    async getById(_id) {
+        return this.lights.find(light => light.id == _id)
+    }
+    async getAll() {
+        return this.lights
     }
 }
 module.exports = { LightRepository: new LightRepository() }

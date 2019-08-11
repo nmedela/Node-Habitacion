@@ -1,0 +1,1 @@
+const { Light } = require('./../domain/light')
