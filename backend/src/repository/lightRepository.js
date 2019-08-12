@@ -1,5 +1,5 @@
 const { Light } = require('./../domain/light')
-var idMain = -1
+var idMain = 0
 class LightRepository {
     constructor() {
         this.lights = []
@@ -7,10 +7,10 @@ class LightRepository {
 
     create() {
         const newLight = new Light()
-        ++idMain
         newLight.id = idMain
         newLight.intensity = 20
         this.lights.push(newLight)
+        ++idMain
     }
     async update(newLight) {
         this.lights = this.lights.filter(light => light.id !== newLight.id)
