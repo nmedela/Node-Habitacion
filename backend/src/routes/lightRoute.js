@@ -22,7 +22,7 @@ router.post('/change', async (req, res, next) => {
         return LightRepository.getById(newLight.id)
                 .then((light) => {
                         if (!light) {
-                                throw "No se encontró una luz con ese ID"
+                                throw "No se encontró una luz con ese ID " + newLight.id 
                         }
                         return LightRepository.update(newLight)
                                 .then((light) => {
