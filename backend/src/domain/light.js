@@ -9,7 +9,7 @@
 //     estado.writeSync(estado)
 // }
 const spawn = require("child_process").spawn;
-
+const exec = require('child_process').exec;
 class Light {
     constructor() {
         this.id = null
@@ -18,7 +18,18 @@ class Light {
 
     run() {
         console.log("Se ejecuto comando para luz ", this.id, " con intensidad ", this.intensity)
-        var process = spawn('sudo python2.7', ["/usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py ", this.id, this.intensity]);
+        // var process = spawn('sudo python2.7', ["/usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py ", this.id, this.intensity]);
+
+        exec(`sudo python2.7 /usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py  ${this.id} ${this.intensity}`, (err, stdout, stderr) => {
+            if (err) {
+              console.error(`exec error: ${err}`);
+              return;
+            }
+          
+            console.log(`stdout: ${stdout}`);
+            console.log(`stderr: ${stderr}`);
+          });
+
 
     }
 
