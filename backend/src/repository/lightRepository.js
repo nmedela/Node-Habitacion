@@ -1,5 +1,5 @@
 const { Light } = require('./../domain/light')
-var idMain = 0
+var idMain = -1
 class LightRepository {
     constructor() {
         this.lights = []
