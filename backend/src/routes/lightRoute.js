@@ -1,10 +1,17 @@
 const express = require('express')
+const path = require('path')
 const Light = require('../domain/light').Light
 const { LightRepository } = require('../repository/lightRepository')
 
 const router = express.Router()
 
+router.use(express.static(path.join(__dirname, './../public')))
 router.get('/', async (req, res, next) => {
+        res.sendFile('light.html',{
+                root: path.join(__dirname, './../public/')
+        })
+})
+router.get('/all', async (req, res, next) => {
         return LightRepository.getAll()
                 .then((lights) => {
                         return res.status(200).send(JSON.stringify(lights))
