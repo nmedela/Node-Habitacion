@@ -5,21 +5,43 @@
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 
+    <script>
+
+        function runLight(id,intensity) {
+            var data = {
+                id,
+                intensity
+            }
+            var request = new Request('http://localhost:4000/light/change', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            fetch(request)
+                .then(function (texto) {
+                    console.log("se esjeuto el botonito ", texto.json())
+
+                })
+        }
+    </script>
 </head>
 
 <body>
     <div class='container-main'>
         <div class='container-left'>
-                <div class='container-button-dimmer'>
-                        <div class=''>
-                            <h4>Luz izquierda</h4>
-                        </div>
-                        <button class='button-dimmer'>Boton 1</button>
-                        <button type="button" class='button-dimmer'>Boton 2</button>
-                        <button type="button" class='button-dimmer'>Boton 3</button>
-                        <button type="button" class='button-dimmer'>Boton 4</button>
-        
-                    </div>
+            <div class='container-button-dimmer'>
+                <div class=''>
+                    <h4>Luz izquierda</h4>
+                </div>
+                <button class='button-dimmer' onclick="runLight(0,10)">Boton 1</button>
+                <button class='button-dimmer' onclick="runLight(0,18)">Boton 2 </button>
+                <button class='button-dimmer' onclick="runLight(0,28)">Boton 3</button>
+                <button class='button-dimmer' onclick="runLight(0,36)">Boton 4</button>
+
+            </div>
         </div>
         <div class='container-middle'>
             <div class='container-middle-top'>

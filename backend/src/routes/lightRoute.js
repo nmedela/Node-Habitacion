@@ -25,7 +25,9 @@ router.get('/luces/:id', async (req, res, next) => {
                 })
 })
 router.post('/change', async (req, res, next) => {
-        const newLight = Light.fromJson(req.body)
+        
+        console.log(req.body)
+        const newLight = Light.fromObject(req.body)
         newLight.id = 0
         return LightRepository.getById(newLight.id)
                 .then((light) => {
