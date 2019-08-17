@@ -1,72 +1,47 @@
+.container-menu{
+    background-color: black;
+}
 .container-main{
-    display: flex;
-    flex-direction: row;
-    /* background-color: gray; */
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-    align-items: stretch
-}
-.container-left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    order:1;
-    width:  30%;
-    /* background-color: blue; */
-}
-.container-middle{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    order:2;
-    width: 40%;
-    /* background-color: green; */
-    align-items: stretch;
-}
-.container-middle-top{
-    order:1;
-    margin: 10px;
-    margin-right: 10px;
-    /* background-color: red; */
-    border: 1px solid;
-    height: 20%;
-    text-align: center;
-}
-.container-middle-bottom{
-    order:2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:10px;
-    /* background-color: red; */
-    /* border: 1px solid; */
-    height: 80%;
-}
-.container-right{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    order:3;
-    width: 30%;
-    /* background-color: blue; */
-}
-.container-button-dimmer{
-    order:1;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    
-    margin: 10px;
-    height: 100%;
-    /* background-color: gray; */
-}
-.button-dimmer{
-    text-align: center;
-    width: 100%;
-    height: 100%;
+    background-color: darkgray;
 }
 .button-main{
-   width: 50%;
-   height: 50%;
+    background-color: lightslategrey;
+    height: 50%;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 200%;
+    }
+.container-dimmer{
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    height: 100%;
+    /* border: 1px solid; */
+}
+.button-dimmer{
+    height: 20%;
+}
+.button-menu{
+    height: 10em;
+    background-color:darksalmon;
+    border: 1px solid;
+    border-color: sienna;
+    text-decoration: none;
+    font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 120%;
+}
+.button-sup{
+    background-color: black;
+    border-radius: 19px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 200%;
+    height: 20%;
+    color: white;
+}
+.container-button-main{
+    margin-bottom: 10px;
 }

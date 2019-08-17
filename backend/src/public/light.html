@@ -2,12 +2,55 @@
 
 <head>
     <link rel="stylesheet" href="./light.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script language="JavaScript" type="text/javascript">
+        function show5(){
+            if (!document.layers&&!document.all&&!document.getElementById)
+            return
+    
+             var Digital=new Date()
+             var hours=Digital.getHours()
+             var minutes=Digital.getMinutes()
+             var seconds=Digital.getSeconds()
+    
+            var dn="PM"
+            if (hours<12)
+            dn="AM"
+            if (hours>12)
+            hours=hours-12
+            if (hours==0)
+            hours=12
+    
+             if (minutes<=9)
+             minutes="0"+minutes
+             if (seconds<=9)
+             seconds="0"+seconds
+            //change font size here to your desire
+            myclock="</br><font size='7' face='Arial' >"+hours+":"+minutes+":"
+             +seconds+" "+dn+"</b></font>"
+            if (document.layers){
+            document.layers.liveclock.document.write(myclock)
+            document.layers.liveclock.document.close()
+            }
+            else if (document.all)
+            liveclock.innerHTML=myclock
+            else if (document.getElementById)
+            document.getElementById("liveclock").innerHTML=myclock
+            setTimeout("show5()",1000)
+             }
+    
+    
+            window.onload=show5
+             //-->
+         </script>
     <script>
 
-        function runLight(id,intensity) {
+        function runLight(id, intensity) {
             var data = {
                 id,
                 intensity
@@ -30,41 +73,66 @@
 </head>
 
 <body>
-    <div class='container-main'>
-        <div class='container-left'>
-            <div class='container-button-dimmer'>
-                <div class=''>
-                    <h4>Luz izquierda</h4>
+    <div class='container-fluid container-main'>
+        <div class='row'>
+            <div class='col-sm-3 container-dimmer'>
+                <div class='col-sm-12'>
+                    <h4> Luz izquierda</h4>
                 </div>
-                <button class='button-dimmer' onclick="runLight(0,10)">Boton 1</button>
-                <button class='button-dimmer' onclick="runLight(0,18)">Boton 2 </button>
-                <button class='button-dimmer' onclick="runLight(0,28)">Boton 3</button>
-                <button class='button-dimmer' onclick="runLight(0,36)">Boton 4</button>
+                <div class=''>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,10)"> Full</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,18)">Agradable</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,28)">Tenue</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,36)">Apagado</button>
+                </div>
+            </div>
+            <div class='col-sm-6 container-dimmer'>
+                <div class="dropdown col-sm-12">
+                    <button class=" btn-secondary dropdown-toggle col-sm-12 button-sup" type="button"
+                        data-toggle="dropdown">Panel
+                        de Control
+                        <span class="home"></span></button>
+                    <ul class="dropdown-menu col-sm-12 ">
+                        <li>
+                            <button type="button" class="col-sm-6 button-menu">Luces</button>
+                            <button type="button" class="col-sm-6 button-menu">Audio</button>
+                        </li>
+                        <li>
+                            <button type="button" class="col-sm-6 button-menu">Control
+                                Remoto</button>
+                            <button type="button" class="col-sm-6 button-menu">Cortinas</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 button-dimmer">
+                    <h1> <span class="col-sm-12 " id="liveclock" style="position:absolute;left:0;top:0;"></span> </h1>
+                </div>
+                <div class="col-sm-12">
+                    <button type="button" class="col-sm-12  button-main">Principal</button>
+                </div>
 
             </div>
-        </div>
-        <div class='container-middle'>
-            <div class='container-middle-top'>
-                <h4>Panel de control</h4>
-            </div>
-            <div class='container-middle-bottom'>
-                <button class='button-main'>Principal</button>
-            </div>
-        </div>
-        <div class='container-right'>
-            <div class='container-button-dimmer'>
-                <div class=''>
-                    <h4>Luz derecha</h4>
+            <div class='col-sm-3 container-dimmer'>
+                <div class='col-sm-12'>
+                    <h4> Luz izquierda</h4>
                 </div>
-                <button type="button" class='button-dimmer '>Boton 1</button>
-                <button type="button" class='button-dimmer '>Boton 2</button>
-                <button type="button" class='button-dimmer '>Boton 3</button>
-                <button type="button" class='button-dimmer '>Boton 4</button>
-
+                <div class=''>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,10)"> Full</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,18)">Agradable</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,28)">Tenue</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
+                        onclick="runLight(0,36)">Apagado</button>
+                </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
