@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="./sound.css">
     <link rel="stylesheet" href="./light.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
@@ -8,46 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script language="JavaScript" type="text/javascript">
-        function show5() {
-            if (!document.layers && !document.all && !document.getElementById)
-                return
-
-            var Digital = new Date()
-            var hours = Digital.getHours()
-            var minutes = Digital.getMinutes()
-            var seconds = Digital.getSeconds()
-
-            var dn = "PM"
-            if (hours < 12)
-                dn = "AM"
-            if (hours > 12)
-                hours = hours - 12
-            if (hours == 0)
-                hours = 12
-
-            if (minutes <= 9)
-                minutes = "0" + minutes
-            if (seconds <= 9)
-                seconds = "0" + seconds
-            //change font size here to your desire
-            myclock = "</br><font size='7' face='Arial' >" + hours + ":" + minutes + ":"
-                + seconds + " " + dn + "</b></font>"
-            if (document.layers) {
-                document.layers.liveclock.document.write(myclock)
-                document.layers.liveclock.document.close()
-            }
-            else if (document.all)
-                liveclock.innerHTML = myclock
-            else if (document.getElementById)
-                document.getElementById("liveclock").innerHTML = myclock
-            setTimeout("show5()", 1000)
-        }
-
-
-        window.onload = show5
-             //-->
-    </script>
     <script>
 
         function runLight(id, intensity) {
@@ -69,28 +30,29 @@
 
                 })
         }
+
     </script>
 </head>
 
 <body>
     <div class='container-fluid container-main'>
         <div class='row'>
-            <div class='col-sm-3 container-dimmer'>
-                <div class='col-sm-12'>
-                    <h4> Luz izquierda</h4>
+            <div class='col-sm-2 container-dimmer'>
+                <div class='col-sm-12 alert alert-info'>
+                    <h4> Graves</h4>
                 </div>
-                <div class=''>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,10)"> Full</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,18)">Agradable</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,28)">Tenue</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,36)">Apagado</button>
+                <div class="">
+                    </br>
+                    </br>
+                    </br>
+                    <input type="range" min="1" max="32" value="0" class="slider" id="myRange"
+                        onchange="agu.value=value">
+                    <output id="agu">0</output>
                 </div>
+                </br>
+
             </div>
-            <div class='col-sm-6 container-dimmer'>
+            <div class='col-sm-8 container-dimmer'>
                 <div class="dropdown col-sm-12">
                     <button class=" btn-secondary dropdown-toggle col-sm-12 button-sup" type="button"
                         data-toggle="dropdown">Panel
@@ -110,27 +72,60 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-sm-12 button-dimmer">
-                    <!-- <h1> <span class="col-sm-12 " id="liveclock" style="position:absolute;left:0;top:0;"></span> </h1> -->
-                </div>
                 <div class="col-sm-12">
-                    <button type="button" class="col-sm-12  button-main">Principal</button>
+                    </br>
+                </div>
+                <div class="col-sm-24">
+                    <button type="button" class="btn btn-success btn-lg col-sm-5 button-dimmer">Encender</button>
+                    <div class="col-sm-2"></div>
+                    <button type="button" class="btn btn-danger btn-lg col-sm-5 button-dimmer">Apagar</button>
+                    <div class="col-sm-12">
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn mute range" onclick="volumen.value = 0">
+                            <span class="glyphicon glyphicon-volume-off"></span>
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn range">
+                            <span class="glyphicon glyphicon-volume-down"></span> -
+                        </button>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="range">
+                            <input type="range" id ="volumen" name="range" min="0" max="32" value="0" onchange="vol.value=value">
+                            <output id="vol">0</output>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn range">
+                            <span class="glyphicon glyphicon-volume-up"></span> +
+                        </button>
+                    </div>
                 </div>
 
             </div>
-            <div class='col-sm-3 container-dimmer'>
-                <div class='col-sm-12'>
-                    <h4> Luz izquierda</h4>
+            <div class='col-sm-2  container-dimmer '>
+                <div class='col-sm-12 alert alert-info'>
+                    <h4> Agudos</h4>
                 </div>
                 <div class=''>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,10)"> Full</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,18)">Agradable</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,28)">Tenue</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block button-dimmer"
-                        onclick="runLight(0,36)">Apagado</button>
+                    <div class="">
+                        </br>
+                        </br>
+                        </br>
+                        <input type="range" min="1" max="32" value="0" class="slider" id="myRange"
+                            onchange="grav.value=value">
+                        <output id="grav">0</output>
+                    </div>
                 </div>
             </div>
         </div>
