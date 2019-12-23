@@ -36,7 +36,8 @@ router.post('/change', async (req, res, next) => {
                         }
                         return LightRepository.update(newLight)
                                 .then((light) => {
-                                        light.run()
+                                        // light.run()
+                                        console.log("Se modificó el estado de la luz ", light)
                                         res.status(200).send(light)
                                 })
                 })
