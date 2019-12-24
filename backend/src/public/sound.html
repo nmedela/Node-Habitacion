@@ -10,16 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script>
-        function refreshVol(volumen){
+        function refreshVol(volumen) {
+            change('volumen', volumen)
             document.getElementById("volumen").value = volumen
             document.getElementById("vol").value = volumen
             console.log(document.getElementById("vol").value)
         }
-        function refreshGrav(graves){
+        function refreshGrav(graves) {
             document.getElementById("graves").value = graves
             document.getElementById("grav").value = graves
         }
-        function refreshAgu(agudos){
+        function refreshAgu(agudos) {
             document.getElementById("agudos").value = agudos
             document.getElementById("agu").value = agudos
         }
@@ -32,24 +33,18 @@
             document.getElementById("graves").value = graves
             document.getElementById("grav").value = graves
         }
-        
+
         function getAgudos() {
             var agudos = -10
             document.getElementById("agudos").value = agudos
             document.getElementById("agu").value = agudos
         }
-        
-        function changeVolumen(value) {
-            document.getElementById("").value = agudos
-            document.getElementById("agu").value = agudos
-        }
 
-        function runLight(id, intensity) {
+        function change(parametro,value) {
             var data = {
-                id,
-                intensity
+                value
             }
-            var request = new Request('http://localhost:4000/light/change', {
+            var request = new Request('http://localhost:4000/sound/change/68/' + parametro, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -131,7 +126,8 @@
                         </button>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn range" onclick="volumen.value > 1 ? refreshVol(volumen.value -2): refreshVol(0)">
+                        <button type="button" class="btn range"
+                            onclick="volumen.value > 1 ? refreshVol(volumen.value -2): refreshVol(0)">
                             <span class="glyphicon glyphicon-volume-down"></span> -
                         </button>
                     </div>
@@ -146,7 +142,8 @@
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn range" onclick="volumen.value < 46 ? refreshVol(parseInt(volumen.value) +2): refreshVol(47)">
+                        <button type="button" class="btn range"
+                            onclick="volumen.value < 46 ? refreshVol(parseInt(volumen.value) +2): refreshVol(47)">
                             <span class="glyphicon glyphicon-volume-up"></span> +
                         </button>
                     </div>

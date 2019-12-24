@@ -25,8 +25,9 @@ router.post('/change/:id/volumen', async (req, res, next) => {
     console.log(req.body)
     return SoundRepository.getById(req.params.id)
         .then((sound) => {
-            sound.setVolumen(req.body.volumen)
+            sound.setVolumen(req.body.value)
             console.log("Se modifica volumen")
+            SoundRepository.update(sound)
             res.status(200).send(sound)
         })
         .catch((error) => {
