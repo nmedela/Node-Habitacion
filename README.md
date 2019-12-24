@@ -2,7 +2,7 @@
 Se cuenta con:
 -Rasperry Pi 2 b+
 -Placa con PIC12f629 con etapa de potencia para control de luces
--Placa con preamplificador estereo controlado por I2C y a su salido un modulo amplificador clase d Tpa3116d2
+-Placa con preamplificador TDA7449 estereo controlado por I2C y a su salido un modulo amplificador clase d Tpa3116d2
 -Placa con biestable para infrarrojo
 -Fuente pc 250W
 -Placa fuente 12V y 5V
