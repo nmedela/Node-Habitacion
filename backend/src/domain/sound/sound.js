@@ -1,6 +1,6 @@
 const spawn = require("child_process").spawn;
 const exec = require('child_process').exec;
-const { parameters } = require('./parametersSound');
+const { volumen,balanceL,balanceR,bass,treble,input,power,gain} = require('./parametersSound');
 
 class Sound {
     constructor() {
@@ -17,32 +17,37 @@ class Sound {
 
     setVolumen(value) {
         this.volumen = value
-        parameters.volumen(this.id, this.volumen)
+        volumen(this.id, this.volumen)
     }
     setBass(value) {
         this.bass = value
-        parameters.bass(this.id, this.bass)
+        bass(this.id, this.bass)
     }
     setTreble(value) {
         this.treble = value
-        parameters.treble(this.id, this.treble)
+        treble(this.id, this.treble)
     }
-    setBalance(value) {
+    setBalanceR(value) {
         this.balance = value
-        parameters.balance(this.id, this.balance)
+        balanceR(this.id, this.balanceR)
+
+    }
+    setBalanceL(value) {
+        this.balance = value
+        balanceL(this.id, this.balanceL)
 
     }
     setGain(value) {
         this.gain = value
-        parameters.gain(this.id, this.gain)
+        gain(this.id, this.gain)
     }
     setPower(value) {
         this.power = value
-        parameters.power(this.id, this.power)
+        power(this.id, this.power)
     }
     setInput(value) {
         this.input = value
-        parameters.input(this.id, this.input)
+        input(this.id, this.input)
     }
 
     toJson() {
