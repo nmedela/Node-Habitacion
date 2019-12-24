@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script>
         function refreshVol(volumen) {
-            change('volumen', volumen)
+            change('volumen', 47 - volumen)
             document.getElementById("volumen").value = volumen
             document.getElementById("vol").value = volumen
             console.log(document.getElementById("vol").value)
@@ -42,9 +42,9 @@
 
         function change(parametro,value) {
             var data = {
-                value
+                value: parseInt( value)
             }
-            var request = new Request('http://localhost:4000/sound/change/68/' + parametro, {
+            var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
