@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const { SoundRepository } = require('.././repository/soundRepository')
+const { soundService } = require('.././services/soundService')
 // const Sound = require('./../domain/sound').Sound
 
 const router = express.Router()
@@ -23,11 +24,10 @@ router.get('/all', async (req, res, newxt) => {
 })
 router.post('/change/:id/volumen', async (req, res, next) => {
     console.log(req.body)
-    return SoundRepository.getById(req.params.id)
+    var id = req.params.id
+    var value = req.body.value
+    return soundService.changeVolumen(id, value)
         .then((sound) => {
-            sound.setVolumen(req.body.value)
-            console.log("Se modifica volumen")
-            SoundRepository.update(sound)
             res.status(200).send(sound)
         })
         .catch((error) => {
