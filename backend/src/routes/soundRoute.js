@@ -89,7 +89,7 @@ router.post('/change/:id/mute', async (req, res, next) => {
 })
 router.post('/change/:id/power', async (req, res, next) => {
     var id = req.params.id
-    var value = req.body.value
+    var value = parseInt(req.body.value)
     console.log("apreto para modificar el power con valor", value)
     return soundService.changePower(id, value)
         .then((sound) => {

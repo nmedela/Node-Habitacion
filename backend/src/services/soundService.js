@@ -47,7 +47,7 @@ class SoundService {
         return this.getSoundById(id)
             .then((sound) => {
                 sound.setPower(value)
-                console.log("Se modifica Power")
+                console.log("Se modifica Power con ", value)
                 SoundRepository.update(sound)
             })
     }
