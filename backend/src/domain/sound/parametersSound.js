@@ -1,10 +1,10 @@
 const spawn = require("child_process").spawn;
 const exec = require('child_process').exec;
 
-// const raspi = require('raspi')
-// const I2C = require('raspi-i2c').I2C
-// const Gpio = require('onoff').Gpio
-// const i2c = new I2C()
+const raspi = require('raspi')
+const I2C = require('raspi-i2c').I2C
+const Gpio = require('onoff').Gpio
+const i2c = new I2C()
 
 // const DEVICE_ADDRESS = 0x44
 const DEVICE_REG_INPUT = 0x00
@@ -16,15 +16,15 @@ const DEVICE_REG_SPEAKER_R = 0x06
 const DEVICE_REG_SPEAKER_L = 0x07
 
 const volumen = (id, value) => {
-    // i2c.writeByteSync(id, DEVICE_REG_VOLUMEN, value)
+    i2c.writeByteSync(id, DEVICE_REG_VOLUMEN, value)
     console.log("Se modifico volumen ", id, " con ", value)
 }
 const bass = (id, value) => {
-    // i2c.writeByteSync(id, DEVICE_REG_BASS, value)
+    i2c.writeByteSync(id, DEVICE_REG_BASS, value)
     console.log("Se modifico Bass ", id, " con ", value)
 }
 const treble = (id, value) => {
-    // i2c.writeByteSync(id, DEVICE_REG_TREBLE, value)
+    i2c.writeByteSync(id, DEVICE_REG_TREBLE, value)
     console.log("Se modifico Treble ", id, " con ", value)
 }
 const balanceR = (id, value) => {
@@ -42,7 +42,7 @@ const gain = (id, value) => {
 const power = (id, value) => {
     var pin = new Gpio(id, 'out')
     pin.writeSync(parseInt(value))
-    console.log("Se modifico Powe pin r ", id, " con ", value)
+    console.log("Se modifico Power pin ", id, " con ", value)
 }
 const input = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_INPUT, value)

@@ -87,5 +87,18 @@ router.post('/change/:id/mute', async (req, res, next) => {
             res.status(400).send(error)
         })
 })
+router.post('/change/:id/power', async (req, res, next) => {
+    var id = req.params.id
+    var value = req.body.value
+    console.log("apreto para modificar el power con valor", value)
+    return soundService.changePower(id, value)
+        .then((sound) => {
+            res.status(200).send(sound)
+        })
+        .catch((error) => {
+            console.log(error)
+            res.status(400).send(error)
+        })
+})
 
 module.exports = router

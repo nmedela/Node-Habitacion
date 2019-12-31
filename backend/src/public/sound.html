@@ -30,6 +30,9 @@
                 console.log("paso por aca el mute dio falso  y lo puso en ", mute)
                 document.getElementById("mute").style.backgroundColor = "white"
             }
+            function refreshPow(power){
+
+            }
 
         }
         function setVolumen(volumen) {
@@ -43,6 +46,10 @@
 
         function setAgudos(agudos) {
             change('treble', agudos)
+            // refreshAgu(agudos)
+        }
+        function setPower(power) {
+            change('power', power)
             // refreshAgu(agudos)
         }
         function setMute() {
@@ -73,6 +80,7 @@
                         refreshGrav(data.bass)
                         refreshVol(data.volumen)
                         refreshMut(data.mute)
+                        refreshPow(data.power)
                     })
                 })
         }
@@ -93,7 +101,7 @@
 
             fetch(request)
                 .then(function (texto) {
-                    console.log("se esjeuto el botonito ", texto)
+                    // console.log("se esjeuto el botonito ", texto)
 
                 })
                 .then(()=>{
@@ -149,9 +157,9 @@
                     </br>
                 </div>
                 <div class="col-sm-24">
-                    <button type="button" class="btn btn-success btn-lg col-sm-5 button-dimmer">Encender</button>
+                    <button type="button" class="btn btn-success btn-lg col-sm-5 button-dimmer" onclick="setPower(true)">Encender</button>
                     <div class="col-sm-2"></div>
-                    <button type="button" class="btn btn-danger btn-lg col-sm-5 button-dimmer">Apagar</button>
+                    <button type="button" class="btn btn-danger btn-lg col-sm-5 button-dimmer" onclick="setPower(false)">Apagar</button>
                     <div class="col-sm-12">
                         </br>
                         </br>

@@ -5,7 +5,7 @@ const { SoundRepository } = require('./../repository/soundRepository')
 const run = () => {
     LightRepository.create()
     LightRepository.create()
-    SoundRepository.create(0x44)
+    SoundRepository.create(0x44, 23)
     console.log(" Se ejecutó el bootstrap")
 
 }

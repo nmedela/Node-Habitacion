@@ -43,6 +43,14 @@ class SoundService {
                 SoundRepository.update(sound)
             })
     }
+    async changePower(id, value) {
+        return this.getSoundById(id)
+            .then((sound) => {
+                sound.setPower(value)
+                console.log("Se modifica Power")
+                SoundRepository.update(sound)
+            })
+    }
 
 }
 module.exports = { soundService: new SoundService() }
