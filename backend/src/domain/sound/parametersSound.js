@@ -40,7 +40,8 @@ const gain = (id, value) => {
 }
 const power = (id, value) => {
     var pin = new Gpio(id, 'out')
-    pin.writeSync(value)
+
+    pin.writeSync(true)
     console.log("Se modifico Power pin ", id, " con ", value)
 }
 const input = (id, value) => {
