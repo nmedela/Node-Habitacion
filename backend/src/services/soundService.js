@@ -19,5 +19,22 @@ class SoundService {
                 SoundRepository.update(sound)
             })
     }
+    async changeBass(id, value) {
+        return this.getSoundById(id)
+            .then((sound) => {
+                sound.setBass(value)
+                console.log("Se modifica graves")
+                SoundRepository.update(sound)
+            })
+    }
+    async changeTreble(id, value) {
+        return this.getSoundById(id)
+            .then((sound) => {
+                sound.setTreble(value)
+                console.log("Se modifica graves")
+                SoundRepository.update(sound)
+            })
+    }
+
 }
 module.exports = { soundService: new SoundService() }

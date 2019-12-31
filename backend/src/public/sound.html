@@ -4,17 +4,15 @@
     <link rel="stylesheet" href="./sound.css">
     <link rel="stylesheet" href="./light.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script>
         function refreshVol(volumen) {
-            change('volumen', 47 - volumen)
             document.getElementById("volumen").value = volumen
             document.getElementById("vol").value = volumen
-            console.log(document.getElementById("vol").value)
         }
         function refreshGrav(graves) {
             document.getElementById("graves").value = graves
@@ -24,40 +22,64 @@
             document.getElementById("agudos").value = agudos
             document.getElementById("agu").value = agudos
         }
-        function getVolumen() {
-            var volumen = 20
+        function setVolumen(volumen) {
+            change('volumen', volumen)
             refreshVol(volumen)
         }
-        function getGraves() {
-            var graves = 10
-            document.getElementById("graves").value = graves
-            document.getElementById("grav").value = graves
+        function setGraves(graves) {
+            change('bass', graves)
+            refreshGrav(graves)
+        }
+        
+        function setAgudos(agudos) {
+            change('treble', agudos)
+            refreshAgu(agudos)
+        }
+        function setMute(){
+            //Falta pone el mute
         }
 
-        function getAgudos() {
-            var agudos = -10
-            document.getElementById("agudos").value = agudos
-            document.getElementById("agu").value = agudos
-        }
-
-        function change(parametro,value) {
+        async function getSound() {
             var data = {
-                value: parseInt( value)
+
             }
-            var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
-                method: 'POST',
+            var request = new Request('http://localhost:4000/sound/sounds/68', {
+                method: 'GET',
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify(data)
             });
-
-            fetch(request)
-                .then(function (texto) {
-                    console.log("se esjeuto el botonito ", texto.json())
-
+            // fetch('http://192.168.0.99:4000/sound/')
+            await fetch(request)
+                .then((response) => {
+                    response.json().then(function (data) {
+                        refreshAgu(data.treble)
+                        refreshGrav(data.bass)
+                        refreshVol(data.volumen)
+                    })
                 })
-        }
+            }
+        getSound()
+
+        function change(parametro, value) {
+                        var data = {
+                            value: parseInt(value)
+                        }
+                        // var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
+                        var request = new Request('/sound/change/68/' + parametro, {
+                            method: 'POST',
+                            headers: {
+                                'Content-type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        });
+
+                        fetch(request)
+                            .then(function (texto) {
+                                console.log("se esjeuto el botonito ", texto)
+
+                            })
+                    }
 
     </script>
 </head>
@@ -73,11 +95,11 @@
                     </br>
                     </br>
                     </br>
-                    <input type="range" min="-15" max="15" value="0" class="slider" id="graves"
-                        onchange="refreshGrav(value)">
+                    <input type="range" min="-14" max="14" class="slider" id="graves" step="2"
+                        onchange="setAgudos(value)">
                     <output id="grav"></output>
                     <script>
-                        getGraves()
+                        // getGraves()
                     </script>
                 </div>
                 </br>
@@ -127,23 +149,23 @@
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn range"
-                            onclick="volumen.value > 1 ? refreshVol(volumen.value -2): refreshVol(0)">
+                            onclick="volumen.value > 1 ? setVolumen(volumen.value -2): setVolumen(0)">
                             <span class="glyphicon glyphicon-volume-down"></span> -
                         </button>
                     </div>
                     <div class="col-sm-7">
                         <div class="range">
                             <input type="range" id="volumen" name="range" min="0" max="47" value="0"
-                                onchange="refreshVol(value)">
+                                onchange="setVolumen(value)">
                             <output id="vol"></output>
                             <script>
-                                getVolumen()
+                                // getVolumen()
                             </script>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn range"
-                            onclick="volumen.value < 46 ? refreshVol(parseInt(volumen.value) +2): refreshVol(47)">
+                            onclick="volumen.value < 46 ? setVolumen(parseInt(volumen.value) +2): setVolumen(47)">
                             <span class="glyphicon glyphicon-volume-up"></span> +
                         </button>
                     </div>
@@ -159,11 +181,11 @@
                         </br>
                         </br>
                         </br>
-                        <input type="range" min="-15" max="15" value="0" class="slider" id="agudos"
-                            onchange="refreshAgu(value)">
+                        <input type="range" min="-14" max="14" class="slider" id="agudos" step="2"
+                            onchange="setAgudos(value)">
                         <output id="agu"></output>
                         <script>
-                            getAgudos()
+                            // getAgudos()
                         </script>
                     </div>
                 </div>
