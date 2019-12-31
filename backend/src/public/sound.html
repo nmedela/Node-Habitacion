@@ -69,7 +69,7 @@
             var data = {
 
             }
-            var request = new Request(`http://${this.URL}/sound/sounds/68`, {
+            var request = new Request(`http://${URL}/sound/sounds/68`, {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json'
@@ -94,7 +94,7 @@
                 value
             }
             // var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
-            var request = new Request(`http://${this.URL}/sound/change/68/${parametro}`, {
+            var request = new Request(`http://${URL}/sound/change/68/${parametro}`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -145,9 +145,9 @@
                     <ul class="dropdown-menu col-sm-12 ">
                         <li>
                             <button type="button" class="col-sm-6 button-menu"
-                                onclick="location.href=`http://192.168.0.99:4000/light`">Luces</button>
+                                onclick="location.href='http://192.168.0.99:4000/light'">Luces</button>
                             <button type="a" class="col-sm-6 button-menu"
-                                onclick="location.href=`http://192.168.0.99:4000/sound`"> Audio</button>
+                                onclick="location.href='http://192.168.0.99:4000/sound'"> Audio</button>
                         </li>
                         <li>
                             <button type="button" class="col-sm-6 button-menu">Control
