@@ -6,11 +6,6 @@ const run = () => {
     LightRepository.create()
     LightRepository.create()
     SoundRepository.create(0x44, 23)
-    await SoundRepository.getById(0x44).then(
-        (sound) => {
-            sound.init()
-        }
-    )
 
     console.log(" Se ejecutó el bootstrap")
 
