@@ -1,7 +1,6 @@
 const spawn = require("child_process").spawn;
 const exec = require('child_process').exec;
 
-const raspi = require('raspi')
 const I2C = require('raspi-i2c').I2C
 const Gpio = require('onoff').Gpio
 const i2c = new I2C()
