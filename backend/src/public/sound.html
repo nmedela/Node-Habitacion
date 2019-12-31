@@ -10,6 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script>
+        const URL = '192.168.0.99'
+
         function refreshVol(volumen) {
             document.getElementById("volumen").value = volumen
             document.getElementById("vol").value = volumen
@@ -30,7 +32,7 @@
                 console.log("paso por aca el mute dio falso  y lo puso en ", mute)
                 document.getElementById("mute").style.backgroundColor = "white"
             }
-            function refreshPow(power){
+            function refreshPow(power) {
 
             }
 
@@ -55,9 +57,9 @@
         function setMute() {
             var color = document.getElementById("mute").style.backgroundColor
             console.log("el color es ", color)
-            if (color == "darkslategray"){
+            if (color == "darkslategray") {
                 change('mute', false)
-            }else{
+            } else {
                 change('mute', true)
             }
         }
@@ -66,7 +68,7 @@
             var data = {
 
             }
-            var request = new Request('http://localhost:4000/sound/sounds/68', {
+            var request = new Request(`http://${URL}:4000/sound/sounds/68`, {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json'
@@ -91,7 +93,7 @@
                 value
             }
             // var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
-            var request = new Request('/sound/change/68/' + parametro, {
+            var request = new Request(`http://${URL}/sound/change/68/${parametro}`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -104,7 +106,7 @@
                     // console.log("se esjeuto el botonito ", texto)
 
                 })
-                .then(()=>{
+                .then(() => {
                     this.getSound()
                 })
         }
@@ -142,9 +144,9 @@
                     <ul class="dropdown-menu col-sm-12 ">
                         <li>
                             <button type="button" class="col-sm-6 button-menu"
-                                onclick="location.href='http://192.168.0.99:4000/light'">Luces</button>
+                                onclick="location.href=`http://${URL}:4000/light`">Luces</button>
                             <button type="a" class="col-sm-6 button-menu"
-                                onclick="location.href='http://192.168.0.99:4000/sound'"> Audio</button>
+                                onclick="location.href=`http://${URL}:4000/sound`"> Audio</button>
                         </li>
                         <li>
                             <button type="button" class="col-sm-6 button-menu">Control
@@ -157,9 +159,11 @@
                     </br>
                 </div>
                 <div class="col-sm-24">
-                    <button type="button" class="btn btn-success btn-lg col-sm-5 button-dimmer" onclick="setPower(true)">Encender</button>
+                    <button type="button" class="btn btn-success btn-lg col-sm-5 button-dimmer"
+                        onclick="setPower(true)">Encender</button>
                     <div class="col-sm-2"></div>
-                    <button type="button" class="btn btn-danger btn-lg col-sm-5 button-dimmer" onclick="setPower(false)">Apagar</button>
+                    <button type="button" class="btn btn-danger btn-lg col-sm-5 button-dimmer"
+                        onclick="setPower(false)">Apagar</button>
                     <div class="col-sm-12">
                         </br>
                         </br>

@@ -1,8 +1,9 @@
+const port = require('./../config').port
 const init = () => {
     const express = require('express')
     const bodyParser = require('body-parser')
     const app = express()
-    const port = 4000
+    // const port = 4000
 
     app.use('/', require('../routes/index.js'))
 
