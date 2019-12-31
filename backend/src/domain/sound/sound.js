@@ -20,6 +20,7 @@ class Sound {
     }
 
     setVolumen(value) {
+        this.mute = OFF
         this.volumen = value
         volumen(this.id, 47 - this.volumen) // 47 es volumen minimo y 0 es maximo
     }

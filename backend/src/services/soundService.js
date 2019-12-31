@@ -35,6 +35,14 @@ class SoundService {
                 SoundRepository.update(sound)
             })
     }
+    async changeMute(id, value) {
+        return this.getSoundById(id)
+            .then((sound) => {
+                sound.setMute(value)
+                console.log("Se modifica Mute")
+                SoundRepository.update(sound)
+            })
+    }
 
 }
 module.exports = { soundService: new SoundService() }

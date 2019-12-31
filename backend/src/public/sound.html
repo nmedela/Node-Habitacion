@@ -22,21 +22,37 @@
             document.getElementById("agudos").value = agudos
             document.getElementById("agu").value = agudos
         }
+        function refreshMut(mute) {
+            if (mute == true) {
+                console.log("paso por aca el mute y lo puso en ", mute)
+                document.getElementById("mute").style.backgroundColor = "darkslategray"
+            } else {
+                console.log("paso por aca el mute dio falso  y lo puso en ", mute)
+                document.getElementById("mute").style.backgroundColor = "white"
+            }
+
+        }
         function setVolumen(volumen) {
             change('volumen', volumen)
-            refreshVol(volumen)
+            // refreshVol(volumen)
         }
         function setGraves(graves) {
             change('bass', graves)
-            refreshGrav(graves)
+            // refreshGrav(graves)
         }
-        
+
         function setAgudos(agudos) {
             change('treble', agudos)
-            refreshAgu(agudos)
+            // refreshAgu(agudos)
         }
-        function setMute(){
-            //Falta pone el mute
+        function setMute() {
+            var color = document.getElementById("mute").style.backgroundColor
+            console.log("el color es ", color)
+            if (color == "darkslategray"){
+                change('mute', false)
+            }else{
+                change('mute', true)
+            }
         }
 
         async function getSound() {
@@ -56,30 +72,34 @@
                         refreshAgu(data.treble)
                         refreshGrav(data.bass)
                         refreshVol(data.volumen)
+                        refreshMut(data.mute)
                     })
                 })
-            }
+        }
         getSound()
 
         function change(parametro, value) {
-                        var data = {
-                            value: parseInt(value)
-                        }
-                        // var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
-                        var request = new Request('/sound/change/68/' + parametro, {
-                            method: 'POST',
-                            headers: {
-                                'Content-type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        });
+            var data = {
+                value
+            }
+            // var request = new Request('http://192.168.0.99:4000/sound/change/68/' + parametro, {
+            var request = new Request('/sound/change/68/' + parametro, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
 
-                        fetch(request)
-                            .then(function (texto) {
-                                console.log("se esjeuto el botonito ", texto)
+            fetch(request)
+                .then(function (texto) {
+                    console.log("se esjeuto el botonito ", texto)
 
-                            })
-                    }
+                })
+                .then(()=>{
+                    this.getSound()
+                })
+        }
 
     </script>
 </head>
@@ -96,7 +116,7 @@
                     </br>
                     </br>
                     <input type="range" min="-14" max="14" class="slider" id="graves" step="2"
-                        onchange="setAgudos(value)">
+                        onchange="setGraves(value)">
                     <output id="grav"></output>
                     <script>
                         // getGraves()
@@ -143,7 +163,7 @@
                         </br>
                     </div>
                     <div class="col-sm-1">
-                        <button type="button" class="btn mute range">
+                        <button type="button" class="btn mute range" id="mute" onclick="setMute()">
                             <span class="glyphicon glyphicon-volume-off"></span>
                         </button>
                     </div>
