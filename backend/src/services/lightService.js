@@ -18,7 +18,7 @@ class LightService {
             .then((light) => {
                 return LightRepository.update(newLight)
                     .then((light) => {
-                        // light.run()
+                        light.run()
                         return newLight
                     })
 

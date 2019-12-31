@@ -62,6 +62,18 @@ class Sound {
             volumen(this.id, 56)
         }
     }
+    
+    init(){
+        volumen(this.id, 47 - this.volumen) // 47 es volumen minimo y 0 es maximo
+        bass(this.id, this.converterDBaPre(value))
+        treble(this.id, this.converterDBaPre(value))
+        balanceR(this.id, this.balanceR)
+        balanceL(this.id, this.balanceL)
+        gain(this.id, this.gain)
+        power(this.gpio, this.power)
+        input(this.id, this.input)
+
+    }
     converterDBaPre(value) { //Si es entre -14db y 0db es 0 y 7 - Si es  de 14db a 2db es 8 a 14// recibo de front en db" y convierto a lo que quiere el pre
         var aux
         if (value % 2 != 0) {
