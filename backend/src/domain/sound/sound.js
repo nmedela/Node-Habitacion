@@ -63,7 +63,7 @@ class Sound {
         }
     }
     
-    init(){
+    setInit(){
         volumen(this.id, 47 - this.volumen) // 47 es volumen minimo y 0 es maximo
         bass(this.id, this.converterDBaPre(value))
         treble(this.id, this.converterDBaPre(value))
