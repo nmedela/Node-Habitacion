@@ -12,3 +12,7 @@ Proyecto consiste en:
 -Controlar luces de manera que se puedan ir agregando. Pueden ser dimerizadas de forma indivudual digitalmente por celular o pantalla vía web.
 -Controlar equipo de audio (graves, agudos, volumen, balance) con celular o pantalla vía web.
 -Controlar Televisor (No smart) por celular o pantalla vía web
+
+Hasta el momento se trae la UI desde el backend.
+Se tiene la interfaz  en html de:
+Control de luces-
