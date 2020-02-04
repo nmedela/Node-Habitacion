@@ -57,7 +57,7 @@ class Sound {
     setMute(value) {
         this.mute = value
         if (this.mute == OFF) {
-            volumen(this.id, this.volumen)
+           this.SetVolumen(this.volumen)
         } else {
             volumen(this.id, 56)
         }
