@@ -16,7 +16,7 @@ Proyecto consiste en:
 Hasta el momento se trae la UI desde el backend.
 Se tiene la interfaz  en html de:
 Control de luces-
-https://raw.githubusercontent.com/nmedela/Node-Habitacion/tree/master/backend/images/screen_light.png
+![alt text](https://raw.githubusercontent.com/nmedela/Node-Habitacion/tree/master/backend/images/screen_light.png)
 
 Control de sonido.
 https://raw.githubusercontent.com/nmedela/Node-Habitacion/tree/master/backend/images/screen_sound.png
