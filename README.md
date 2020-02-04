@@ -37,4 +37,5 @@ onoff Gpio
 Para el control de las luces se utiliza child_process para poder ejecutar desde consola un script Python:
 - python2.7 /usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py al cual se le pasan 2 parametros, el ID de la luz y la intensidad.
 
+Al levantar la aplicación, se corre un bootstrap, el cual crea 2 instancias de luces (controlo solo 2 luces) y una de sonido.
 
