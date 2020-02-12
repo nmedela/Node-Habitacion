@@ -16,7 +16,7 @@ class SoundService {
             .then((sound) => {
                 sound.setVolumen(value)
                 console.log("Se modifica volumen")
-                SoundRepository.update(sound)
+                return SoundRepository.update(sound)
             })
     }
     async changeBass(id, value) {
