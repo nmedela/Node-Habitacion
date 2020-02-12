@@ -40,6 +40,7 @@ router.post('/change/:id/volumen', async (req, res, next) => {
     var value = parseInt(req.body.value)
     return soundService.changeVolumen(id, value)
         .then((sound) => {
+            console.log('esto es lo que devuelvo',sound)
             res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
