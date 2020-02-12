@@ -40,7 +40,7 @@ router.post('/change/:id/volumen', async (req, res, next) => {
     var value = parseInt(req.body.value)
     return soundService.changeVolumen(id, value)
         .then((sound) => {
-            res.status(200).send(sound)
+            res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
             console.log(error)
@@ -57,7 +57,7 @@ router.post('/change/:id/bass', async (req, res, next) => {
         })
         .catch((error) => {
             console.log(error)
-            res.status(400).send(error)
+            res.status(400).send(JSON.stringify(sound))
         })
 })
 router.post('/change/:id/treble', async (req, res, next) => {
@@ -66,7 +66,7 @@ router.post('/change/:id/treble', async (req, res, next) => {
     var value = parseInt(req.body.value)
     return soundService.changeTreble(id, value)
         .then((sound) => {
-            res.status(200).send(sound)
+            res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
             console.log(error)
@@ -80,7 +80,7 @@ router.post('/change/:id/mute', async (req, res, next) => {
 
     return soundService.changeMute(id, value)
         .then((sound) => {
-            res.status(200).send(sound)
+            res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
             console.log(error)
@@ -93,7 +93,7 @@ router.post('/change/:id/power', async (req, res, next) => {
     console.log("apreto para modificar el power con valor", value)
     return soundService.changePower(id, value)
         .then((sound) => {
-            res.status(200).send(sound)
+            res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
             console.log(error)
