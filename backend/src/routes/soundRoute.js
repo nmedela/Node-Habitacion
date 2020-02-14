@@ -40,7 +40,7 @@ router.post('/change/:id/volumen', async (req, res, next) => {
     var value = parseInt(req.body.value)
     return soundService.changeVolumen(id, value)
         .then((sound) => {
-            console.log('esto es lo que devuelvo',sound)
+            console.log('esto es lo que devuelvo', sound)
             res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
@@ -66,6 +66,19 @@ router.post('/change/:id/treble', async (req, res, next) => {
     var id = req.params.id
     var value = parseInt(req.body.value)
     return soundService.changeTreble(id, value)
+        .then((sound) => {
+            res.status(200).send(JSON.stringify(sound))
+        })
+        .catch((error) => {
+            console.log(error)
+            res.status(400).send(error)
+        })
+})
+router.post('/change/:id/balanceR', async (req, res, next) => {
+    console.log(req.body)
+    var id = req.params.id
+    var value = parseInt(req.body.value)
+    return soundService.changeBalanceR(id, value)
         .then((sound) => {
             res.status(200).send(JSON.stringify(sound))
         })

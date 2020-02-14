@@ -35,6 +35,14 @@ class SoundService {
                 SoundRepository.update(sound)
             })
     }
+    async changeBalanceR(id, value) {
+        return this.getSoundById(id)
+            .then((sound) => {
+                sound.setBalanceR(value)
+                console.log("Se modifica balance R")
+                SoundRepository.update(sound)
+            })
+    }
     async changeMute(id, value) {
         return this.getSoundById(id)
             .then((sound) => {
