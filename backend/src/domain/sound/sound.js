@@ -33,12 +33,12 @@ class Sound {
         treble(this.id, this.converterDBaPre(value))
     }
     setBalanceR(value) {
-        this.balance = value
+        this.balanceR = value
         balanceR(this.id, this.balanceR)
 
     }
     setBalanceL(value) {
-        this.balance = value
+        this.balanceL = value
         balanceL(this.id, this.balanceL)
 
     }
