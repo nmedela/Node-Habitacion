@@ -87,6 +87,19 @@ router.post('/change/:id/balanceR', async (req, res, next) => {
             res.status(400).send(error)
         })
 })
+router.post('/change/:id/balanceL', async (req, res, next) => {
+    console.log(req.body)
+    var id = req.params.id
+    var value = parseInt(req.body.value)
+    return soundService.changeBalanceL(id, value)
+        .then((sound) => {
+            res.status(200).send(JSON.stringify(sound))
+        })
+        .catch((error) => {
+            console.log(error)
+            res.status(400).send(error)
+        })
+})
 router.post('/change/:id/mute', async (req, res, next) => {
     console.log("Paso por esta parte la del mute", req.body)
     var id = req.params.id
