@@ -17,6 +17,7 @@ class Sound {
         this.power = 0x00
         this.input = 0x02
         this.mute = OFF
+        this.idSpeaker = null
     }
 
     setVolumen(value) {
@@ -48,7 +49,7 @@ class Sound {
     }
     setPower(value) {
         this.power = value
-        power(this.gpio, this.power)
+        power(this.gpio, this.power, this.idSpeaker)
     }
     setInput(value) {
         this.input = value

@@ -4,10 +4,11 @@ class SoundRepository {
         this.sounds = []
     }
 
-    create(address, gpio) {
+    create(address, gpio, gpioSpeaker) {
         const newSound = new Sound()
         newSound.id = address
         newSound.gpio = gpio
+        newSound.idSpeaker=gpioSpeaker
         this.sounds.push(newSound)
         console.log(this.sounds)
     }

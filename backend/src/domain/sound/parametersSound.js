@@ -38,9 +38,13 @@ const gain = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_GAIN, value)
     console.log("Se modifico Gain ", id, " con ", value)
 }
-const power = (id, value) => {
-    var pin = new Gpio(id, 'out')
-    pin.writeSync(parseInt(value))
+const power = (id, value, idSpeaker) => {
+    var audio = new Gpio(id, 'out')
+    var speaker = new Gpio(idSpeaker, 'out')
+    audio.writeSync(parseInt(value))
+    setTimeout((value)=>{
+        speaker.writeSync(parseInt(this.value))
+    }, 3000)
     console.log("Se modifico Power pin ", id, " con ", value)
 }
 const input = (id, value) => {
