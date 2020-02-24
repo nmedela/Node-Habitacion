@@ -49,10 +49,8 @@ const power = (id, value, idSpeaker) => {
         }, 3000)
     }else{
         speaker.writeSync(parseInt(value))
-        setTimeout(()=>{
-            audio.writeSync(parseInt(value))
-            console.log("Se modifico Power pin ", id, " con ", value)
-        }, 3000)
+        audio.writeSync(parseInt(value))
+        console.log("Se modifico Power pin ", id, " con ", value)
 
     }
 }
