@@ -1,5 +1,6 @@
 const { Light } = require('./../domain/light')
 const { LightRepository } = require('./../repository/lightRepository')
+const { OptionRepository } = require('./../repository/optionRepository')
 
 class LightService {
     async getAll() {
@@ -19,6 +20,8 @@ class LightService {
             }
             )
     }
+
+
     async changeLight(newLight) {
         return this.getLightById(newLight.id)
             .then((light) => {
@@ -30,6 +33,21 @@ class LightService {
 
             })
     }
+    async createOption(newOption){
+        return OptionRepository.create(newOption)
+        
+    }
+    async getOptionById(id) {
+
+        return OptionRepository.getById(id)
+            .then((option) => {
+                if (!option) {
+                    throw "No se encontró una opcion con ese ID " + id
+                }
+            }
+            )
+    }
+    
 
 }
 

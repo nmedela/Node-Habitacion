@@ -1,14 +1,51 @@
 const { lightService } = require('./../services/lightService')
-
+const Light = require('../domain/light').Light
 
 class Option {
     constructor(_frecuency, _light, _action, _hour) {
+        id=null
         started = null
         frecuency = null
         light = null
         action = null
-        hour = null
-        executed = null
+        time = null
+        executed = false
+    }
+
+    toJson() {
+        return JSON.stringify({
+            // id: this.id,
+            // intensity: this.intensity,
+        })
+    }
+
+    toPlainObject() {
+        return JSON.parse(this.toJson())
+    }
+
+    static fromJson(json = '{}') {
+        if (!json) {
+            return new Option()
+        }
+        const object = typeof json === 'object' ? json : JSON.parse(json)
+        const option = new Option()
+        option.id = object.id || option.id
+        option.started = object.started || option.started
+        option.frecuency= object.frecuency || option.frecuency
+        newLight = Light.fromObject(object.light)
+        option.light= newLight || option.light
+        option.action= object.action || option.action
+        option.time= object.time || option.time
+        option.executed= object.executed || option.executed
+
+        return option
+    }
+
+    static fromObject(object) {
+        if (!(object instanceof Option)) {
+            return Option.fromJson(object)
+        }
+        return object
     }
 }
 
@@ -43,10 +80,12 @@ const NICE = {
 const listSteps = {
     frecuency: [ONETIME, ALWAYS],
     action: [ON, NICE, FAINT, OFF],
-}
+} //agrego el item de luces el el route, cuando pido la lista
+
 
 module.exports = {
-    listSteps
+    listSteps,
+    Option
 }
 
 

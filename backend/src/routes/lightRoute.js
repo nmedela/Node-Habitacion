@@ -56,4 +56,37 @@ router.get('/steps', async (req, res, next) => {
 
 })
 
+
+router.get('/program/all', async (req, res, next) => {
+        return OptionRepository.getAll()
+                .then((options) => {
+                        return res.status(200).send(JSON.stringify(options))
+                })
+})
+router.get('/program/:id', async (req, res, next) => {
+        var id = req.params.id
+        return lightService.getOptionById(id)
+                .then((option) => {
+                        return res.status(200).send(JSON.stringify(option))
+                })
+                .catch((error) => {
+                        res.status(400).send(error)
+                })
+})
+
+router.post('/program', async (req, res, next) => {
+
+        console.log(req.body)
+        const newOption = Option.fromObject(req.body)
+        return lightService.createOption(newOption)
+                .then((newOption) => {
+                        console.log("Se creó la opcion ", newOption)
+                        res.status(200).send(newOption)
+                })
+
+                .catch((error) => {
+                        res.status(400).send(error)
+                })
+})
+
 module.exports = router
