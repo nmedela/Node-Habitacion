@@ -3,7 +3,7 @@ const Light = require('../domain/light').Light
 
 class Option {
     constructor(_frecuency, _light, _action, _hour) {
-        id=null
+        id = null
         started = null
         frecuency = null
         light = null
@@ -31,12 +31,12 @@ class Option {
         const option = new Option()
         option.id = object.id || option.id
         option.started = object.started || option.started
-        option.frecuency= object.frecuency || option.frecuency
+        option.frecuency = object.frecuency || option.frecuency
         newLight = Light.fromObject(object.light)
-        option.light= newLight || option.light
-        option.action= object.action || option.action
-        option.time= object.time || option.time
-        option.executed= object.executed || option.executed
+        option.light = newLight || option.light
+        option.action = object.action || option.action
+        option.time = object.time || option.time
+        option.executed = object.executed || option.executed
 
         return option
     }
@@ -78,8 +78,22 @@ const NICE = {
 }
 
 const listSteps = {
-    frecuency: [ONETIME, ALWAYS],
-    action: [ON, NICE, FAINT, OFF],
+    frecuency: {
+        title: 'Seleccionar frecuencia',
+        list: [ONETIME, ALWAYS],
+    },
+    action: {
+        title: 'Modo de accionar',
+        list: [ON, NICE, FAINT, OFF],
+    },
+    light:{
+        title:'Seleccionar luz',
+        list:null,
+    },
+    hour:{
+        title:'Establecer tiempo'
+    }
+
 } //agrego el item de luces el el route, cuando pido la lista
 
 

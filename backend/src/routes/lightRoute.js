@@ -3,7 +3,7 @@ const path = require('path')
 const Light = require('../domain/light').Light
 const { LightRepository } = require('../repository/lightRepository')
 const { lightService } = require('./../services/lightService')
-const listSteps = require('./../domain/programLight')
+const {...listSteps} = require('./../domain/programLight')
 
 
 const router = express.Router()
@@ -49,7 +49,7 @@ router.get('/steps', async (req, res, next) => {
 
         return lightService.getAll()
                 .then((light) => {
-                        listSteps.light = light
+                        listSteps.light.list = light
                         res.status(200).send(JSON.stringify(listSteps))
                 })
 
