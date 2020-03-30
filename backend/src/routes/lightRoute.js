@@ -49,7 +49,7 @@ router.get('/steps', async (req, res, next) => {
 
         return lightService.getAll()
                 .then((light) => {
-                        listSteps[2].light.list.push(light)
+                        listSteps.light.list.push(light)
                         res.status(200).send(JSON.stringify(listSteps))
                 })
 
