@@ -7,7 +7,7 @@ class LightService {
         return LightRepository.getAll()
             .then((lights) => {
                 console.log(lights)
-                return JSON.stringify(lights)
+                return lights
             })
     }
     async getLightById(id) {
