@@ -92,7 +92,7 @@ const listSteps = [{
 {
     light: {
         title: 'Seleccionar luz',
-        list: null,
+        list: [],
     }
 },
 {
