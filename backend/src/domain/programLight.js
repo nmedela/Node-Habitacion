@@ -77,36 +77,29 @@ const NICE = {
     intensity: 19
 }
 
-const listSteps = {
-    frecuency: {
+const listSteps = [
+    {
         title: 'Seleccionar frecuencia',
-        list: [ONETIME, ALWAYS],
-    }
-    ,
-    action: {
+        list: [ONETIME, ALWAYS]
+    },
+    {
         title: 'Modo de accionar',
-        list: [ON, NICE, FAINT, OFF],
-    }
-    ,
-
-    light: {
+        list: [ON, NICE, FAINT, OFF]
+    },
+    {
         title: 'Seleccionar luz',
-        list: [],
+        list: []
+    },
+    { 
+        title: 'Establecer tiempo',
+        list:[]
     }
-    ,
-
-    hour: {
-        title: 'Establecer tiempo'
-    }
-}
+]
 
 //agrego el item de luces el el route, cuando pido la lista
 
 
-module.exports = {
-    listSteps,
-    Option
-}
+module.exports = listSteps, Option
 
 
 
