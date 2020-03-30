@@ -49,9 +49,9 @@ router.get('/steps', async (req, res, next) => {
 
         return lightService.getAll()
                 .then((light) => {
-                        console.log('Estas son las luces , ',light)
-                        console.log('Esto la  lista, acá se ve que trae, ',listSteps)
-                        listSteps.light.list = [light]
+                        console.log('Estas son las luces , ', light)
+                        console.log('Esto la  lista, acá se ve que trae, ', listSteps)
+                        listSteps.listSteps.light.list = [light]
                         console.log('acá tuvo que pasarrrrrrrrrrr')
                         res.status(200).send(JSON.stringify(listSteps))
                 })
