@@ -99,7 +99,7 @@ const listSteps = [
 //agrego el item de luces el el route, cuando pido la lista
 
 
-module.exports = listSteps, Option
+module.exports = {listSteps}, Option
 
 
 
