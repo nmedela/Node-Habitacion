@@ -3,6 +3,8 @@ const path = require('path')
 const Light = require('../domain/light').Light
 const { LightRepository } = require('../repository/lightRepository')
 const { lightService } = require('./../services/lightService')
+const listSteps = require('./../domain/programLight')
+
 
 const router = express.Router()
 
@@ -42,6 +44,16 @@ router.post('/change', async (req, res, next) => {
                 .catch((error) => {
                         res.status(400).send(error)
                 })
+})
+router.get('/steps', async (req, res, next) => {
+
+        return lightService.getAll()
+                .then((light) => {
+                        listSteps.light = light
+                        res.status(200).send(JSON.stringify(listSteps))
+                })
+
+
 })
 
 module.exports = router

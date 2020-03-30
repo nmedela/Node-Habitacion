@@ -2,7 +2,13 @@ const { Light } = require('./../domain/light')
 const { LightRepository } = require('./../repository/lightRepository')
 
 class LightService {
-
+    async getAll() {
+        return LightRepository.getAll()
+            .then((lights) => {
+                console.log(lights)
+                return JSON.stringify(lights)
+            })
+    }
     async getLightById(id) {
 
         return LightRepository.getById(id)
