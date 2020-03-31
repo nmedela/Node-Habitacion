@@ -4,6 +4,7 @@ class Light {
     constructor() {
         this.id = null
         this.intensity = null
+        this.title = 'Luz ' + this.id
     }
 
     run() {
@@ -27,6 +28,7 @@ class Light {
         return JSON.stringify({
             id: this.id,
             intensity: this.intensity,
+            title: this.title
         })
     }
 
@@ -42,6 +44,7 @@ class Light {
         const light = new Light()
         light.id = object.id || light.id
         light.intensity = object.intensity || light.intensity
+        light.title = object.title || light.title
         return light
     }
 
