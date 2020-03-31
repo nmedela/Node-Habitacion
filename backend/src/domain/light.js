@@ -4,7 +4,7 @@ class Light {
     constructor() {
         this.id = null
         this.intensity = null
-        this.title = 'Luz ' + this.id
+        this.title = null
     }
 
     run() {

@@ -9,6 +9,7 @@ class LightRepository {
         const newLight = new Light()
         newLight.id = idMain
         newLight.intensity = 20
+        newLight.title = 'Luz ' + newLight.id
         this.lights.push(newLight)
         console.log(this.lights)
         ++idMain
