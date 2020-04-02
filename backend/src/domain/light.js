@@ -8,7 +8,7 @@ class Light {
     }
 
     run() {
-        console.log("Se ejecuto comando para luz ", this.id, " con intensidad ", this.intensity)
+        console.log("Se ejecuto comando para luz ", this.id, " con intensidad ", this.intensity , " con titulo " , this.title)
         // var process = spawn('sudo python2.7', ["/usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py ", this.id, this.intensity]);
 
         exec(`sudo python2.7 /usr/lib/python2.7/dist-packages/RPi/ejecutarLuz.py  ${this.id} ${this.intensity}`, (err, stdout, stderr) => {
