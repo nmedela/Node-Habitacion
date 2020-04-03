@@ -20,7 +20,7 @@ class OptionRepository {
         return newOption
     }
     async delete(option) {
-        console.log('Se tiene que borrar, ', option)
+        console.log('Se tiene que borrar, ', option.id)
         this.options = this.options.filter(option => option.id !== newOption.id)
         return this.options
     }
