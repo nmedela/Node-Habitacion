@@ -1,15 +1,16 @@
 const { lightService } = require('./../services/lightService')
 const Light = require('../domain/light').Light
+const moment = require('moment')
 
 class OptionProgram {
-    constructor(_frecuency, _light, _action, _hour) {
-        id = null
-        started = null
-        frecuency = null
-        action = null
-        light = null
-        time = null
-        executed = false
+    constructor() {
+        this.id = null
+        this.started = null
+        this.frecuency = null
+        this.action = null
+        this.light = null
+        this.time = null
+        this.executed = false
     }
 
     toJson() {
@@ -39,19 +40,12 @@ recibo
         const object = typeof json === 'object' ? json : JSON.parse(json)
         const option = new OptionProgram()
         option.id = object.id || option.id
-        option.started = object.started || option.started
-        
-        const frecuency= {}
-        const action={}
+        option.started = moment(object.started) || option.started
         const newLight = Light.fromObject(object.light)
-        // frecuency = listSteps[0].list[object.frecuency]
-        // action = listSteps[1].list[object.action]
         option.frecuency = listSteps[0].list[object.frecuency] || option.frecuency
         option.light = newLight || option.light
         option.action = listSteps[1].list[object.action] || option.action
-        option.time = object.time || option.time
-        option.executed = object.executed || option.executed
-
+        option.time = moment(object.time, 'HH:mm') || option.time
         return option
     }
 
@@ -113,7 +107,7 @@ const listSteps = [
 //agrego el item de luces el el route, cuando pido la lista
 
 
-module.exports = { listSteps , OptionProgram }
+module.exports = { listSteps, OptionProgram }
 
 
 

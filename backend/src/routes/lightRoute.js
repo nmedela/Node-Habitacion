@@ -86,12 +86,12 @@ recibo
         time: 'XX:XX'
 */
 
-        console.log(req.body)
+        console.log('recibo esto del body' ,req.body)
         const newOption = OptionProgram.fromObject(req.body)
         return lightService.createOption(newOption)
                 .then((newOption) => {
                         console.log("Se creó la opcion ", newOption)
-                        res.status(200).send(newOption)
+                        res.status(200).send(JSON.stringify(newOption))
                 })
                 .catch((error) => {
                         res.status(400).send(error)
