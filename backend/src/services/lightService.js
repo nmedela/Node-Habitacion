@@ -17,6 +17,7 @@ class LightService {
                 if (!light) {
                     throw "No se encontró una luz con ese ID " + id
                 }
+                return light
             }
             )
     }
