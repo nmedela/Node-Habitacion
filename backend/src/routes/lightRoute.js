@@ -100,7 +100,7 @@ router.post('/program', async (req, res, next) => {
 })
 router.delete('/program/:id', async (req, res, next) => {
         var id = req.params.id
-
+        console.log('llega esto para borrar id,', id)
         return lightService.delete(id).then((option) => {
                 res.status(200).send(JSON.stringify(option))
         })
