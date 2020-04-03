@@ -41,6 +41,7 @@ class LightService {
             
             return OptionRepository.getById(id)
             .then((option) => {
+                console.log('el getOptionById encontró esto,' , option)
                 if (!option) {
                     throw "No se encontró una opcion con ese ID " + id
                 }
