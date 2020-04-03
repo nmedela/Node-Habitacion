@@ -51,7 +51,7 @@ router.get('/steps', async (req, res, next) => {
 
         return lightService.getAll()
                 .then((light) => {
-                        console.log('Esto es lo que trae el 2 ,',listSteps[2] )
+                        console.log('Esto es lo que trae el 2 ,', listSteps[2])
                         listSteps[2].list = light
                         res.status(200).send(JSON.stringify(listSteps))
                 })
@@ -78,21 +78,34 @@ router.get('/program/:id', async (req, res, next) => {
 })
 
 router.post('/program', async (req, res, next) => {
-/*
-recibo 
-        started: Date.now() milisegundos,
-        frecuency: index,
-        action: index,
-        light: {id,intensity,title}
-        time: 'XX:XX'
-*/
+        /*
+        recibo 
+                started: Date.now() milisegundos,
+                frecuency: index,
+                action: index,
+                light: {id,intensity,title}
+                time: 'XX:XX'
+        */
 
-        console.log('recibo esto del body' ,req.body)
+        console.log('recibo esto del body', req.body)
         const newOption = OptionProgram.fromObject(req.body)
         return lightService.createOption(newOption)
                 .then((newOption) => {
                         console.log("Se creó la opcion ", newOption)
                         res.status(200).send(JSON.stringify(newOption))
+                })
+                .catch((error) => {
+                        res.status(400).send(error)
+                })
+})
+router.delete('/program/:id', async (req, res, next) => {
+        var id = req.params.id
+
+        return lightService.getOptionById(id)
+                .then((option) => {
+                        return lightService.delete(option).then((option) => {
+                                return res.status(200).send(JSON.stringify(option))
+                        })
                 })
                 .catch((error) => {
                         res.status(400).send(error)
