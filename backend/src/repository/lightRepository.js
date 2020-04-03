@@ -11,7 +11,7 @@ class LightRepository {
         newLight.intensity = 20
         newLight.title = 'Luz ' + idMain
         this.lights.push(newLight)
-        console.log(this.lights)
+        // console.log(this.lights)
         ++idMain
     }
     async update(newLight) {

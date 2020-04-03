@@ -10,7 +10,7 @@ class OptionRepository {
         newOption.id = idMain
         //acá deberpia ponerle la hora, pero la estoy trayendo del cliente
         this.options.push(newOption)
-        console.log(this.options)
+        // console.log(this.options)
         ++idMain
         return newOption
     }
