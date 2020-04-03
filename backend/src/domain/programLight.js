@@ -1,13 +1,13 @@
 const { lightService } = require('./../services/lightService')
 const Light = require('../domain/light').Light
 
-class Option {
+class OptionProgram {
     constructor(_frecuency, _light, _action, _hour) {
         id = null
         started = null
         frecuency = null
-        light = null
         action = null
+        light = null
         time = null
         executed = false
     }
@@ -24,17 +24,31 @@ class Option {
     }
 
     static fromJson(json = '{}') {
+        /*
+recibo 
+        started: Date.now() milisegundos,
+        frecuency: index,
+        action: index,
+        light: {id,intensity,title}
+        time: 'XX:XX'
+*/
+
         if (!json) {
-            return new Option()
+            return new OptionProgram()
         }
         const object = typeof json === 'object' ? json : JSON.parse(json)
-        const option = new Option()
+        const option = new OptionProgram()
         option.id = object.id || option.id
         option.started = object.started || option.started
-        option.frecuency = object.frecuency || option.frecuency
-        newLight = Light.fromObject(object.light)
+        
+        const frecuency= {}
+        const action={}
+        const newLight = Light.fromObject(object.light)
+        // frecuency = listSteps[0].list[object.frecuency]
+        // action = listSteps[1].list[object.action]
+        option.frecuency = listSteps[0].list[object.frecuency] || option.frecuency
         option.light = newLight || option.light
-        option.action = object.action || option.action
+        option.action = listSteps[1].list[object.action] || option.action
         option.time = object.time || option.time
         option.executed = object.executed || option.executed
 
@@ -42,8 +56,8 @@ class Option {
     }
 
     static fromObject(object) {
-        if (!(object instanceof Option)) {
-            return Option.fromJson(object)
+        if (!(object instanceof OptionProgram)) {
+            return OptionProgram.fromJson(object)
         }
         return object
     }
@@ -90,16 +104,16 @@ const listSteps = [
         title: 'Seleccionar luz',
         list: []
     },
-    { 
+    {
         title: 'Establecer tiempo',
-        list:[]
+        list: []
     }
 ]
 
 //agrego el item de luces el el route, cuando pido la lista
 
 
-module.exports = {listSteps}, Option
+module.exports = { listSteps , OptionProgram }
 
 
 

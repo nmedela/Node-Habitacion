@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const Light = require('../domain/light').Light
+const OptionProgram = require('./../domain/programLight').OptionProgram
 const { LightRepository } = require('../repository/lightRepository')
 const { lightService } = require('./../services/lightService')
 const listSteps = require('./../domain/programLight').listSteps
@@ -76,15 +77,22 @@ router.get('/program/:id', async (req, res, next) => {
 })
 
 router.post('/program', async (req, res, next) => {
+/*
+recibo 
+        started: Date.now() milisegundos,
+        frecuency: index,
+        action: index,
+        light: {id,intensity,title}
+        time: 'XX:XX'
+*/
 
         console.log(req.body)
-        const newOption = Option.fromObject(req.body)
+        const newOption = OptionProgram.fromObject(req.body)
         return lightService.createOption(newOption)
                 .then((newOption) => {
                         console.log("Se creó la opcion ", newOption)
                         res.status(200).send(newOption)
                 })
-
                 .catch((error) => {
                         res.status(400).send(error)
                 })
