@@ -42,7 +42,6 @@ class LightService {
 
         return OptionRepository.getById(id)
             .then((option) => {
-                console.log('el getOptionById encontró esto,', option)
                 if (!option) {
                     throw "No se encontró una opcion con ese ID " + id
                 }
@@ -53,7 +52,6 @@ class LightService {
     async delete(id) {
         return this.getOptionById(id)
             .then((option) => {
-                console.log('Encontró esta opcion para borrar,', option)
                 return OptionRepository.delete(option)
                     .then((option) => {
                         return option
