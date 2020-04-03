@@ -45,7 +45,9 @@ recibo
         option.frecuency = listSteps[0].list[object.frecuency] || option.frecuency
         option.light = newLight || option.light
         option.action = listSteps[1].list[object.action] || option.action
-        option.time = moment(object.time, 'HH:mm') || option.time
+        var timeFormated = moment(object.time, "HH:mm")
+        var timeAux = option.frecuency ? timeFormated : option.started.add(timeFormated.minutes(), 'minutes')
+        option.time = timeAux.format("HH:mm") || option.time
         return option
     }
 
