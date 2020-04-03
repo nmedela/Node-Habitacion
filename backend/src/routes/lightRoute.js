@@ -3,6 +3,7 @@ const path = require('path')
 const Light = require('../domain/light').Light
 const OptionProgram = require('./../domain/programLight').OptionProgram
 const { LightRepository } = require('../repository/lightRepository')
+const { OptionRepository } = require('../repository/optionRepository')
 const { lightService } = require('./../services/lightService')
 const listSteps = require('./../domain/programLight').listSteps
 
