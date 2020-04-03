@@ -101,15 +101,12 @@ router.post('/program', async (req, res, next) => {
 router.delete('/program/:id', async (req, res, next) => {
         var id = req.params.id
 
-        return lightService.getOptionById(id)
-                .then((option) => {
-                        return lightService.delete(option).then((option) => {
-                                return res.status(200).send(JSON.stringify(option))
-                        })
-                })
-                .catch((error) => {
-                        res.status(400).send(error)
-                })
+        return lightService.delete(id).then((option) => {
+                res.status(200).send(JSON.stringify(option))
+        })
+        .catch((error) => {
+                res.status(400).send(error)
+        })
 })
 
 module.exports = router
