@@ -32,34 +32,35 @@ class LightService {
                     })
 
             })
-        }
-        async createOption(newOption){
-            return OptionRepository.create(newOption)
-            
-        }
-        async getOptionById(id) {
-            
-            return OptionRepository.getById(id)
+    }
+    async createOption(newOption) {
+        return OptionRepository.create(newOption)
+
+    }
+    async getOptionById(id) {
+
+        return OptionRepository.getById(id)
             .then((option) => {
-                console.log('el getOptionById encontró esto,' , option)
+                console.log('el getOptionById encontró esto,', option)
                 if (!option) {
                     throw "No se encontró una opcion con ese ID " + id
                 }
+                return option
             }
             )
-        }
-        async delete(id){
-            return this.getOptionById(id)
-                .then((option) => {
-                    console.log('Encontró esta opcion para borrar,', option)
-                    return OptionRepository.delete(option)
-                        .then((option) => {
-                            return option
-                        })
-    
-                })
-        }
-        
+    }
+    async delete(id) {
+        return this.getOptionById(id)
+            .then((option) => {
+                console.log('Encontró esta opcion para borrar,', option)
+                return OptionRepository.delete(option)
+                    .then((option) => {
+                        return option
+                    })
+
+            })
+    }
+
 }
 
 module.exports = { lightService: new LightService() }
