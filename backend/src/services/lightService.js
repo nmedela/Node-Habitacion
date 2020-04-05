@@ -36,7 +36,7 @@ class LightService {
     }
     async createOption(newOption) {
         console.log("Acá entro en el serivce ", newOption)
-        return OptionRepository.create(newOption)
+        OptionRepository.create(newOption)
 
     }
     async getOptionById(id) {
