@@ -8,7 +8,7 @@ const demonExcecuteLight = () => {
     configuration.forEach(option => {
         if (option.time == moment().format("HH:mm") && !option.executed) {
             option.execute()
-            await new Promise(done => setTimeout(done, 5000))
+            new Promise(done => setTimeout(done, 5000))
                 .then(() => {
                     console.log("esto está adentro de la promise de 5s", option)
                     option.executed = true
