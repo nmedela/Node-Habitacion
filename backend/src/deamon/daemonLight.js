@@ -1,4 +1,4 @@
-import moment from 'moment'
+const moment = require('moment')
 const { LightRepository } = require('./../repository/lightRepository')
 const { OptionRepository } = require('./../repository/optionRepositoryRepository')
 
