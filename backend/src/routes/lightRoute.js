@@ -95,6 +95,7 @@ router.post('/program', async (req, res, next) => {
                         res.status(200).send(JSON.stringify(newOption))
                 })
                 .catch((error) => {
+                        console.log("tira error ", error)
                         res.status(400).send(error)
                 })
 })
