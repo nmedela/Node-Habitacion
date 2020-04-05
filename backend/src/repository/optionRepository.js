@@ -8,6 +8,7 @@ class OptionRepository {
     async create(newOption) {
         // const newOption = new Option()
         newOption.id = idMain
+        console.log("en el repository pasa esto", newOption)
         //acá deberpia ponerle la hora, pero la estoy trayendo del cliente
         this.options.push(newOption)
         // console.log(this.options)

@@ -89,6 +89,7 @@ router.post('/program', async (req, res, next) => {
 
         console.log('recibo esto del body', req.body)
         const newOption = OptionProgram.fromObject(req.body)
+        console.log("Aca lo converti en option ", newOption)
         return lightService.createOption(newOption)
                 .then((newOption) => {
                         res.status(200).send(JSON.stringify(newOption))
