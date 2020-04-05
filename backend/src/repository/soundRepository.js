@@ -11,6 +11,7 @@ class SoundRepository {
         newSound.idSpeaker=gpioSpeaker
         this.sounds.push(newSound)
         console.log(this.sounds)
+        return newSound
     }
     async update(newSound) {
         this.sounds = this.sounds.filter(sound => sound.id !== newSound.id)
@@ -23,6 +24,12 @@ class SoundRepository {
     }
     async getAll() {
         return this.sounds
+    }
+    async init(_id){
+        return this.getById(_id).then((sound)=>{
+            sound.setInit()
+            return this.update(sound)
+        })
     }
 }
 module.exports = { SoundRepository: new SoundRepository() }

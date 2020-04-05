@@ -66,13 +66,13 @@ class Sound {
     
     setInit(){
         volumen(this.id, 47 - this.volumen) // 47 es volumen minimo y 0 es maximo
-        bass(this.id, this.converterDBaPre(value))
-        treble(this.id, this.converterDBaPre(value))
-        balanceR(this.id, this.balanceR)
-        balanceL(this.id, this.balanceL)
-        gain(this.id, this.gain)
-        power(this.gpio, this.power)
-        input(this.id, this.input)
+        setTimeOut(bass(this.id, this.converterDBaPre(value)), 500)
+        setTimeOut(treble(this.id, this.converterDBaPre(value)),1000)
+        setTimeOut(balanceR(this.id, this.balanceR),1500)
+        setTimeOut(balanceL(this.id, this.balanceL),2000)
+        setTimeOut(gain(this.id, this.gain),2500)
+        setTimeOut(power(this.gpio, this.power),3000)
+        setTimeOut(input(this.id, this.input),3500)
 
     }
     converterDBaPre(value) { //Si es entre -14db y 0db es 0 y 7 - Si es  de 14db a 2db es 8 a 14// recibo de front en db" y convierto a lo que quiere el pre
