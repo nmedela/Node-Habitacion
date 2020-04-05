@@ -4,7 +4,7 @@ class SoundRepository {
         this.sounds = []
     }
 
-    create(address, gpio, gpioSpeaker) {
+    async create(address, gpio, gpioSpeaker) {
         const newSound = new Sound()
         newSound.id = address
         newSound.gpio = gpio
