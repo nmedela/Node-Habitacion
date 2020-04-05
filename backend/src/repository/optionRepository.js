@@ -5,7 +5,7 @@ class OptionRepository {
         this.options = []
     }
 
-    create(newOption) {
+    create = (newOption)=> {
         // const newOption = new Option()
         console.log("en el repository pasa esto", newOption)
         newOption.id = idMain
