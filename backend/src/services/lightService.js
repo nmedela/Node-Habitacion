@@ -1,7 +1,8 @@
 const { Light } = require('./../domain/light')
 const { LightRepository } = require('./../repository/lightRepository')
-const { OptionRepository } = require('./../repository/optionRepository')
+const OptionRepository  = require('./../repository/optionRepository').OptionRepository
 
+const repositorioOptions = OptionRepository
 class LightService {
     async getAll() {
         return LightRepository.getAll()
@@ -36,7 +37,7 @@ class LightService {
     }
     async createOption(newOption) {
         console.log("Acá entro en el serivce ", newOption)
-        OptionRepository.create(newOption)
+        return OptionRepository.getAll()
 
     }
     async getOptionById(id) {

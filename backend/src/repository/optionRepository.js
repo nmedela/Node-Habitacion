@@ -5,7 +5,7 @@ class OptionRepository {
         this.options = []
     }
 
-    create = (newOption)=> {
+    async create(newOption){
         // const newOption = new Option()
         console.log("en el repository pasa esto", newOption)
         newOption.id = idMain
@@ -13,7 +13,7 @@ class OptionRepository {
         this.options.push(newOption)
         // console.log(this.options)
         ++idMain
-        // return newOption
+        return newOption
     }
     async update(newOption) {
         this.options = this.options.filter(option => option.id !== newOption.id)
