@@ -66,8 +66,8 @@ class Sound {
     
     setInit(){
         volumen(this.id, 47 - this.volumen) // 47 es volumen minimo y 0 es maximo
-       var graves= setTimeout(function(){bass(this.id, this.converterDBaPre(value))}, 500)
-       var agudos=setTimeout(function(){treble(this.id, this.converterDBaPre(value))},1000)
+       var graves= setTimeout(function(){bass(this.id, this.converterDBaPre(this.bass))}, 500)
+       var agudos=setTimeout(function(){treble(this.id, this.converterDBaPre(this.treble))},1000)
        var balanceDerecha= setTimeout(function(){balanceR(this.id, this.balanceR)},1500)
        var balanceIz=setTimeout(function(){balanceL(this.id, this.balanceL)},2000)
        var ganancia=setTimeout(function(){gain(this.id, this.gain)},2500)
