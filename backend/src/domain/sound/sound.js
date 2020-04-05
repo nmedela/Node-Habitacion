@@ -63,16 +63,18 @@ class Sound {
             volumen(this.id, 56)
         }
     }
-    
-    setInit(){
+
+    setInit() {
         volumen(this.id, 47 - this.volumen) // 47 es volumen minimo y 0 es maximo
-       var graves= setTimeout(function(){bass(this.id, this.converterDBaPre(this.bass))}, 500)
-       var agudos=setTimeout(function(){treble(this.id, this.converterDBaPre(this.treble))},1000)
-       var balanceDerecha= setTimeout(function(){balanceR(this.id, this.balanceR)},1500)
-       var balanceIz=setTimeout(function(){balanceL(this.id, this.balanceL)},2000)
-       var ganancia=setTimeout(function(){gain(this.id, this.gain)},2500)
-       var encendido=setTimeout(function(){power(this.gpio, this.power)},3000)
-       var entrada=setTimeout(function(){input(this.id, this.input)},3500)
+        var grv = this.converterDBaPre(this.bass)
+        var agd = this.converterDBaPre(this.treble)
+        var graves = setTimeout(function () { bass(this.id, grv) }, 500)
+        var agudos = setTimeout(function () { treble(this.id, agd) }, 1000)
+        var balanceDerecha = setTimeout(function () { balanceR(this.id, this.balanceR) }, 1500)
+        var balanceIz = setTimeout(function () { balanceL(this.id, this.balanceL) }, 2000)
+        var ganancia = setTimeout(function () { gain(this.id, this.gain) }, 2500)
+        var encendido = setTimeout(function () { power(this.gpio, this.power) }, 3000)
+        var entrada = setTimeout(function () { input(this.id, this.input) }, 3500)
 
     }
     converterDBaPre(value) { //Si es entre -14db y 0db es 0 y 7 - Si es  de 14db a 2db es 8 a 14// recibo de front en db" y convierto a lo que quiere el pre
