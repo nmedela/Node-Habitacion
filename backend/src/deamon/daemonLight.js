@@ -1,38 +1,42 @@
 const moment = require('moment')
 const { LightRepository } = require('./../repository/lightRepository')
-const { OptionRepository } = require('./../repository/optionRepositoryRepository')
+const { OptionRepository } = require('./../repository/optionRepository')
 
 const demonExcecuteLight = () => {
     var configuration = OptionRepository.getAll()
     console.log("Se ejecuto el daemon de luces, Esto está en las opciones ", configuration)
-    configuration.forEach(option => {
-        if (option.time == moment().format("HH:mm") && !option.executed) {
-            option.execute()
-            new Promise(done => setTimeout(done, 5000))
-                .then(() => {
-                    console.log("esto está adentro de la promise de 5s", option)
-                    option.executed = true
-                    OptionRepository.update(option)
+    configuration.then((opciones) => {
+        opciones.forEach(option => {
+            if (option.time == moment().format("HH:mm") && !option.executed) {
+                option.execute()
+                new Promise(done => setTimeout(done, 5000))
+                    .then(() => {
+                        console.log("esto está adentro de la promise de 5s", option)
+                        option.executed = true
+                        OptionRepository.update(option)
 
-                })
-        }
+                    })
+            }
+        })
+
     })
-
 }
 
 //TODO demon para borrar los ejecutados
 const demonDeleteExecuted = () => {
     var configuration = OptionRepository.getAll()
     console.log("Se ejecuto el daemon de borrar luces configuradas, Esto está en las opciones ", configuration)
-    configuration.forEach(option => {
-        if (!option.executed && !option.repeat) {
-            OptionRepository.delete(option)
-        }
-        if(option.executed && option.repeat){
-            option.executed =false
-            OptionRepository.update(option)
-        }
+    configuration.then((opciones) => {
+        opciones.forEach(option => {
+            if (!option.executed && !option.repeat) {
+                OptionRepository.delete(option)
+            }
+            if (option.executed && option.repeat) {
+                option.executed = false
+                OptionRepository.update(option)
+            }
 
+        })
     })
 
 }

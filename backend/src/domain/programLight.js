@@ -1,9 +1,9 @@
 const { lightService } = require('./../services/lightService')
 const { LightRepository } = require('./../repository/lightRepository')
 
+
 const Light = require('../domain/light').Light
 const moment = require('moment')
-const service =new LightRepository()
 
 class OptionProgram {
     constructor() {
@@ -18,7 +18,7 @@ class OptionProgram {
 
     execute(){
         this.light.intensity = action.intensity
-        service.changeLight(this.light)
+        lightService.changeLight(this.light)
     }
 
     toJson() {
