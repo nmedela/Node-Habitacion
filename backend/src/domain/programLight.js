@@ -12,7 +12,10 @@ class OptionProgram {
         this.time = null
         this.executed = false
     }
-
+    execute(){
+        this.light.intensity= this.action.intensity
+        lightService.changeLight(this.light)
+    }
     toJson() {
         return JSON.stringify({
             // id: this.id,
