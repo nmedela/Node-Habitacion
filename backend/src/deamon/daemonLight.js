@@ -30,7 +30,7 @@ const demonDeleteExecuted = () => {
     console.log("Se ejecuto el daemon de borrar luces configuradas, Esto está en las opciones ", configuration)
     configuration.then((opciones) => {
         opciones.forEach(option => {
-            if (!option.executed && !option.repeat) {
+            if (option.executed && !option.repeat) {
                 OptionRepository.delete(option)
             }
             if (option.executed && option.repeat) {
