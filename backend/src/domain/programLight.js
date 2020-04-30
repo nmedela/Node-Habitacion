@@ -47,6 +47,7 @@ recibo
         const option = new OptionProgram()
         option.id = object.id || option.id
         option.started = moment(object.started) || option.started
+        console.log("Esto tiene la luz antes de convertirse en LIGHT ", object.light)
         const newLight = Light.fromObject(object.light)
         option.frecuency = listSteps[0].list[object.frecuency] || option.frecuency
         option.light = newLight || option.light
