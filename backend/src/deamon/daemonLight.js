@@ -1,9 +1,9 @@
 const moment = require('moment')
 // const { LightRepository } = require('./../repository/lightRepository')
 // const { OptionRepository } = require('./../repository/optionRepository')
-const { OptionRepository } = require('../repository/optionRepository')
 
 const demonExcecuteLight = () => {
+    const { OptionRepository } = require('../repository/optionRepository')
     var configuration = OptionRepository.getAll()
     console.log("Se ejecuto el daemon de luces, Esto está en las opciones ", configuration)
     configuration.then((opciones) => {
@@ -25,6 +25,7 @@ const demonExcecuteLight = () => {
 
 //TODO demon para borrar los ejecutados
 const demonDeleteExecuted = () => {
+    const { OptionRepository } = require('../repository/optionRepository')
     var configuration = OptionRepository.getAll()
     console.log("Se ejecuto el daemon de borrar luces configuradas, Esto está en las opciones ", configuration)
     configuration.then((opciones) => {
