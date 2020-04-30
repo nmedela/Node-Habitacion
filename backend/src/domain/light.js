@@ -42,8 +42,7 @@ class Light {
         }
         const object = typeof json === 'object' ? json : JSON.parse(json)
         const light = new Light()
-        console.log("Y asi esta cuando entra al fromJason del light,", light, "y el object ", object)
-        light.id = object.id || light.id
+        light.id = object.id
         light.intensity = object.intensity || light.intensity
         light.title = object.title || light.title
         return light
