@@ -104,11 +104,12 @@ router.delete('/program/:id', async (req, res, next) => {
         var id = req.params.id
         return lightService.getOptionById(id)
         .then((option) => {
+                console.log("ahora quiere borrar esto: ", option)
                 OptionRepository.delete(option)
                 res.status(200).send(JSON.stringify(option))
         })
                 .catch((error) => {
-                        res.status(400).send(error)
+                        res.status(400).send(JSON.stringify(error))
                 })
 })
 
