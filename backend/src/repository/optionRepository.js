@@ -26,6 +26,7 @@ class OptionRepository {
         return this.options
     }
     async getById(_id) {
+        console.log("paso por el getByid del repositorio de opcion con este id", _id)
         return this.options.find(option => option.id == _id)
     }
     async getAll() {

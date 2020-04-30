@@ -109,6 +109,7 @@ router.delete('/program/:id', async (req, res, next) => {
                 res.status(200).send(JSON.stringify(option))
         })
                 .catch((error) => {
+                        console.log("error de delete, ", error)
                         res.status(400).send(JSON.stringify(error))
                 })
 })
