@@ -107,9 +107,9 @@ router.delete('/program/:id', async (req, res, next) => {
                 OptionRepository.delete(option)
                 res.status(200).send(JSON.stringify(option))
         })
-        .catch((error) => {
-                res.status(400).send(error)
-        })
+                .catch((error) => {
+                        res.status(400).send(error)
+                })
 })
 
 module.exports = router

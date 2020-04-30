@@ -8,7 +8,7 @@ class SoundRepository {
         const newSound = new Sound()
         newSound.id = address
         newSound.gpio = gpio
-        newSound.idSpeaker=gpioSpeaker
+        newSound.idSpeaker = gpioSpeaker
         this.sounds.push(newSound)
         console.log(this.sounds)
         return newSound
@@ -25,8 +25,8 @@ class SoundRepository {
     async getAll() {
         return this.sounds
     }
-    async init(_id){
-        return this.getById(_id).then((sound)=>{
+    async init(_id) {
+        return this.getById(_id).then((sound) => {
             sound.setInit()
             return this.update(sound)
         })

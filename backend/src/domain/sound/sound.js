@@ -73,9 +73,8 @@ class Sound {
         var balanceDerecha = setTimeout(() => { balanceR(this.id, this.balanceR) }, 1500)
         var balanceIz = setTimeout(() => { balanceL(this.id, this.balanceL) }, 2000)
         var ganancia = setTimeout(() => { gain(this.id, this.gain) }, 2500)
-        var encendido = setTimeout(() => { power(this.gpio, this.power) }, 3000)
+        var encendido = setTimeout(() => { power(this.gpio, this.power, this.idSpeaker) }, 3000)
         var entrada = setTimeout(() => { input(this.id, this.input) }, 3500)
-
     }
     converterDBaPre(value) { //Si es entre -14db y 0db es 0 y 7 - Si es  de 14db a 2db es 8 a 14// recibo de front en db" y convierto a lo que quiere el pre
         var aux
