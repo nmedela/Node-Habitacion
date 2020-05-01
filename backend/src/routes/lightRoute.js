@@ -22,6 +22,14 @@ router.get('/all', async (req, res, next) => {
                         return res.status(200).send(JSON.stringify(lights))
                 })
 })
+router.get('/scenes', async (req, res, next) => {
+        console.log("acá pido las scenes")
+        return lightService.getScenes()
+                .then((scenes) => {
+                        console.log("Esto debería tener las scenes ", scenes)
+                        return res.status(200).send(JSON.stringify(scenes))
+                })
+})
 router.get('/luces/:id', async (req, res, next) => {
         var id = req.params.id
         return lightService.getLightById(id)
