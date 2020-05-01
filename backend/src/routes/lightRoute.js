@@ -6,6 +6,7 @@ const { LightRepository } = require('../repository/lightRepository')
 const { OptionRepository } = require('../repository/optionRepository')
 const { lightService } = require('./../services/lightService')
 const listSteps = require('./../domain/programLight').listSteps
+const listScenes = require('./../domain/programLight').listScenes
 
 
 const router = express.Router()
@@ -23,12 +24,8 @@ router.get('/all', async (req, res, next) => {
                 })
 })
 router.get('/scenes', async (req, res, next) => {
-        console.log("acá pido las scenes")
-        return lightService.getScenes()
-                .then((scenes) => {
-                        console.log("Esto debería tener las scenes ", scenes)
-                        return res.status(200).send(JSON.stringify(scenes))
-                })
+        // console.log("Esto debería tener las scenes ", listScenes)
+        return res.status(200).send(JSON.stringify(listScenes))
 })
 router.get('/luces/:id', async (req, res, next) => {
         var id = req.params.id
@@ -111,11 +108,11 @@ router.post('/program', async (req, res, next) => {
 router.delete('/program/:id', async (req, res, next) => {
         var id = req.params.id
         return lightService.getOptionById(id)
-        .then((option) => {
-                // console.log("ahora quiere borrar esto: ", option)
-                OptionRepository.delete(option)
-                res.status(200).send(JSON.stringify(option))
-        })
+                .then((option) => {
+                        // console.log("ahora quiere borrar esto: ", option)
+                        OptionRepository.delete(option)
+                        res.status(200).send(JSON.stringify(option))
+                })
                 .catch((error) => {
                         // console.log("error de delete, ", error)
                         res.status(400).send(JSON.stringify(error))

@@ -93,6 +93,7 @@ const NICE = {
     title: 'Agradable',
     intensity: 20
 }
+const listScenes = [OFF,FAINT,NICE,ON]
 
 const listSteps = [
     {
@@ -115,8 +116,11 @@ const listSteps = [
 
 //agrego el item de luces el el route, cuando pido la lista
 
-
-module.exports = { listSteps, OptionProgram,OFF,ON,FAINT,NICE }
+const hola =()=>{
+    console.log("se ejecuta el hola \n hola \n holaaaaa")
+}
+hola()
+module.exports = { listSteps, OptionProgram , listScenes}
 
 
 
