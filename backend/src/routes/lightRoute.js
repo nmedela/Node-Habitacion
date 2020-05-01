@@ -52,7 +52,7 @@ router.get('/steps', async (req, res, next) => {
         return lightService.getAll()
                 .then((light) => {
                         // console.log('Esto es lo que trae el 2 ,', listSteps[2])
-                        listSteps[2].list = light
+                        listSteps[2].list = light // pongo la lista de luces en la lsita de step 2
                         res.status(200).send(JSON.stringify(listSteps))
                 })
 

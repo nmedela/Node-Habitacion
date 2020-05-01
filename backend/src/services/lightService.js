@@ -1,6 +1,7 @@
 const { Light } = require('./../domain/light')
 const { LightRepository } = require('./../repository/lightRepository')
 const { OptionRepository } = require('./../repository/optionRepository')
+const { OFF,NICE,FAINT,ON } = require('./../domain/programLight')
 
 class LightService {
     async getAll() {
@@ -9,6 +10,9 @@ class LightService {
                 // console.log(lights)
                 return lights
             })
+    }
+    async getScenes() {
+        return [OFF,FAINT,NICE,ON]
     }
     async getLightById(id) {
 
