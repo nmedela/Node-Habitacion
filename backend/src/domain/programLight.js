@@ -87,11 +87,11 @@ const ON = {
 }
 const FAINT = {
     title: 'Tenue',
-    intensity: 26
+    intensity: 30
 }
 const NICE = {
     title: 'Agradable',
-    intensity: 19
+    intensity: 20
 }
 
 const listSteps = [

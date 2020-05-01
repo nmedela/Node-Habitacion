@@ -5,14 +5,12 @@ const moment = require('moment')
 const demonExcecuteLight = () => {
     const { OptionRepository } = require('../repository/optionRepository')
     var configuration = OptionRepository.getAll()
-    console.log("Se ejecuto el daemon de luces, Esto está en las opciones ", configuration)
     configuration.then((opciones) => {
         opciones.forEach(option => {
             if (option.time == moment().format("HH:mm") && !option.executed) {
                 option.execute()
                 new Promise(done => setTimeout(done, 5000))
                     .then(() => {
-                        console.log("esto está adentro de la promise de 5s", option)
                         option.executed = true
                         OptionRepository.update(option)
 
@@ -27,7 +25,6 @@ const demonExcecuteLight = () => {
 const demonDeleteExecuted = () => {
     const { OptionRepository } = require('../repository/optionRepository')
     var configuration = OptionRepository.getAll()
-    console.log("Se ejecuto el daemon de borrar luces configuradas, Esto está en las opciones ", configuration)
     configuration.then((opciones) => {
         opciones.forEach(option => {
             if (option.executed && !option.repeat) {

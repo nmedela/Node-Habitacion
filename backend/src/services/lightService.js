@@ -6,7 +6,7 @@ class LightService {
     async getAll() {
         return LightRepository.getAll()
             .then((lights) => {
-                console.log(lights)
+                // console.log(lights)
                 return lights
             })
     }
@@ -35,7 +35,7 @@ class LightService {
             })
     }
     async createOption(newOption) {
-        console.log("Acá entro en el serivce ", newOption)
+        // console.log("Acá entro en el serivce ", newOption)
         return OptionRepository.getAll()
 
     }
@@ -51,7 +51,7 @@ class LightService {
             )
     }
     async delete(id) {
-        console.log("paso por servicio de luz con este id ", id)
+        // console.log("paso por servicio de luz con este id ", id)
         return this.getOptionById(id)
             .then((option) => {
                 return OptionRepository.delete(option)

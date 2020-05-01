@@ -24,10 +24,10 @@ router.get('/all', async (req, res, newxt) => {
 })
 router.get('/sounds/:id', async (req, res, next) => {
     var id = req.params.id
-    console.log("paso por aca re piola", id)
+    // console.log("paso por aca re piola", id)
     return soundService.getSoundById(id)
         .then((sound) => {
-            console.log("paso por aca re piola", sound)
+            // console.log("paso por aca re piola", sound)
             return res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
@@ -40,7 +40,7 @@ router.post('/change/:id/volumen', async (req, res, next) => {
     var value = parseInt(req.body.value)
     return soundService.changeVolumen(id, value)
         .then((sound) => {
-            console.log('esto es lo que devuelvo', sound)
+            // console.log('esto es lo que devuelvo', sound)
             res.status(200).send(JSON.stringify(sound))
         })
         .catch((error) => {
@@ -49,7 +49,7 @@ router.post('/change/:id/volumen', async (req, res, next) => {
         })
 })
 router.post('/change/:id/bass', async (req, res, next) => {
-    console.log(req.body)
+    // console.log(req.body)
     var id = req.params.id
     var value = parseInt(req.body.value)
     return soundService.changeBass(id, value)
@@ -75,7 +75,7 @@ router.post('/change/:id/treble', async (req, res, next) => {
         })
 })
 router.post('/change/:id/balanceR', async (req, res, next) => {
-    console.log(req.body)
+    // console.log(req.body)
     var id = req.params.id
     var value = parseInt(req.body.value)
     return soundService.changeBalanceR(id, value)
@@ -88,7 +88,7 @@ router.post('/change/:id/balanceR', async (req, res, next) => {
         })
 })
 router.post('/change/:id/balanceL', async (req, res, next) => {
-    console.log(req.body)
+    // console.log(req.body)
     var id = req.params.id
     var value = parseInt(req.body.value)
     return soundService.changeBalanceL(id, value)
@@ -101,7 +101,7 @@ router.post('/change/:id/balanceL', async (req, res, next) => {
         })
 })
 router.post('/change/:id/mute', async (req, res, next) => {
-    console.log("Paso por esta parte la del mute", req.body)
+    // console.log("Paso por esta parte la del mute", req.body)
     var id = req.params.id
     var value = req.body.value
 
@@ -117,7 +117,7 @@ router.post('/change/:id/mute', async (req, res, next) => {
 router.post('/change/:id/power', async (req, res, next) => {
     var id = req.params.id
     var value = parseInt(req.body.value)
-    console.log("apreto para modificar el power con valor", value)
+    // console.log("apreto para modificar el power con valor", value)
     return soundService.changePower(id, value)
         .then((sound) => {
             res.status(200).send(JSON.stringify(sound))

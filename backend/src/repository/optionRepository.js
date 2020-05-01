@@ -11,7 +11,7 @@ class OptionRepository {
         newOption.id = idMain
         //acá deberpia ponerle la hora, pero la estoy trayendo del cliente
         this.options.push(newOption)
-        console.log(this.options)
+        // console.log(this.options)
         ++idMain
         return newOption
     }
@@ -21,12 +21,12 @@ class OptionRepository {
         return newOption
     }
     async delete(newOption) {
-        console.log("Paso por delete de repository")
+        // console.log("Paso por delete de repository")
         this.options = this.options.filter(option => option.id !== newOption.id)
         return this.options
     }
     async getById(_id) {
-        console.log("paso por el getByid del repositorio de opcion con este id", _id)
+        // console.log("paso por el getByid del repositorio de opcion con este id", _id)
         return this.options.find(option => option.id == _id)
     }
     async getAll() {

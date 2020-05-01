@@ -34,12 +34,12 @@ router.get('/luces/:id', async (req, res, next) => {
 })
 router.post('/change', async (req, res, next) => {
 
-        console.log(req.body)
+        // console.log(req.body)
         const newLight = Light.fromObject(req.body)
-        newLight.id = 0 // acordarse de sacar esto ino no va a funcionar nunca (creo que lo puse para que cualquera de las 2 luces que aprete me tire la que funca)
+        // newLight.id = 0 // acordarse de sacar esto ino no va a funcionar nunca (creo que lo puse para que cualquera de las 2 luces que aprete me tire la que funca)
         return lightService.changeLight(newLight)
                 .then((newLight) => {
-                        console.log("Se modificó el estado de la luz ", newLight)
+                        // console.log("Se modificó el estado de la luz ", newLight)
                         res.status(200).send(newLight)
                 })
 
@@ -51,7 +51,7 @@ router.get('/steps', async (req, res, next) => {
 
         return lightService.getAll()
                 .then((light) => {
-                        console.log('Esto es lo que trae el 2 ,', listSteps[2])
+                        // console.log('Esto es lo que trae el 2 ,', listSteps[2])
                         listSteps[2].list = light
                         res.status(200).send(JSON.stringify(listSteps))
                 })
@@ -89,7 +89,7 @@ router.post('/program', async (req, res, next) => {
 
         console.log('recibo esto del body', req.body)
         const newOption = OptionProgram.fromObject(req.body)
-        console.log("Aca lo converti en option ", newOption)
+        // console.log("Aca lo converti en option ", newOption)
         // return lightService.createOption(newOption)
         return OptionRepository.create(newOption)
                 .then((newOption) => {
@@ -104,12 +104,12 @@ router.delete('/program/:id', async (req, res, next) => {
         var id = req.params.id
         return lightService.getOptionById(id)
         .then((option) => {
-                console.log("ahora quiere borrar esto: ", option)
+                // console.log("ahora quiere borrar esto: ", option)
                 OptionRepository.delete(option)
                 res.status(200).send(JSON.stringify(option))
         })
                 .catch((error) => {
-                        console.log("error de delete, ", error)
+                        // console.log("error de delete, ", error)
                         res.status(400).send(JSON.stringify(error))
                 })
 })

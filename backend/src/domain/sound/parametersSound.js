@@ -16,27 +16,27 @@ const DEVICE_REG_SPEAKER_L = 0x07
 
 const volumen = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_VOLUMEN, value)
-    console.log("Se modifico volumen ", id, " con ", value)
+    // console.log("Se modifico volumen ", id, " con ", value)
 }
 const bass = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_BASS, value)
-    console.log("Se modifico Bass ", id, " con ", value)
+    // console.log("Se modifico Bass ", id, " con ", value)
 }
 const treble = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_TREBLE, value)
-    console.log("Se modifico Treble ", id, " con ", value)
+    // console.log("Se modifico Treble ", id, " con ", value)
 }
 const balanceR = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_SPEAKER_R, value)
-    console.log("Se modifico Balance Right ", id, " con ", value)
+    // console.log("Se modifico Balance Right ", id, " con ", value)
 }
 const balanceL = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_SPEAKER_L, value)
-    console.log("Se modifico Balance Left ", id, " con ", value)
+    // console.log("Se modifico Balance Left ", id, " con ", value)
 }
 const gain = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_GAIN, value)
-    console.log("Se modifico Gain ", id, " con ", value)
+    // console.log("Se modifico Gain ", id, " con ", value)
 }
 const power = (id, value, idSpeaker) => {
     var audio = new Gpio(id, 'out')
@@ -45,18 +45,18 @@ const power = (id, value, idSpeaker) => {
         audio.writeSync(parseInt(value))
         setTimeout(() => {
             speaker.writeSync(parseInt(value))
-            console.log("Se modifico Power pin ", id, " con ", value)
+            // console.log("Se modifico Power pin ", id, " con ", value)
         }, 3000)
     } else {
         speaker.writeSync(parseInt(value))
         audio.writeSync(parseInt(value))
-        console.log("Se modifico Power pin ", id, " con ", value)
+        // console.log("Se modifico Power pin ", id, " con ", value)
 
     }
 }
 const input = (id, value) => {
     i2c.writeByteSync(id, DEVICE_REG_INPUT, value)
-    console.log("Se modifico Input ", id, " con ", value)
+    // console.log("Se modifico Input ", id, " con ", value)
 }
 
 module.exports = {
