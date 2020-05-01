@@ -7,7 +7,7 @@ const { OptionRepository } = require('../repository/optionRepository')
 const { lightService } = require('./../services/lightService')
 const listSteps = require('./../domain/programLight').listSteps
 const listScenes = require('./../domain/programLight').listScenes
-
+const exec = require('child_process').exec;
 
 const router = express.Router()
 
@@ -51,6 +51,17 @@ router.post('/change', async (req, res, next) => {
                 .catch((error) => {
                         res.status(400).send(error)
                 })
+})
+router.post('/principal', async (req, res, next) => {
+        exec(`sudo python2.7 /usr/lib/python2.7/dist-packages/RPi/togglePrincipal.py`, (err, stdout, stderr) => {
+                if (err) {
+                        console.error(`exec error: ${err}`);
+                        return;
+                }
+                console.log(`stdout: ${stdout}`);
+                console.log(`stderr: ${stderr}`);
+        });
+        return res.status(200).send()
 })
 router.get('/steps', async (req, res, next) => {
 
