@@ -12,7 +12,7 @@ class LightService {
             })
     }
     async getScenes() {
-        return [progra.OFF,program.FAINT,program.NICE,program.ON]
+        return [program.OFF,program.FAINT,program.NICE,program.ON]
     }
     async getLightById(id) {
 
