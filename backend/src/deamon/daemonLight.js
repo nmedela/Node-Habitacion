@@ -25,6 +25,7 @@ const demonExcecuteLight = () => {
 const demonDeleteExecuted = () => {
     const { OptionRepository } = require('../repository/optionRepository')
     var configuration = OptionRepository.getAll()
+    console.log("Corre demon de configuraciones", configuration)
     configuration.then((opciones) => {
         opciones.forEach(option => {
             if (option.executed && !option.repeat) {
