@@ -28,10 +28,10 @@ const demonDeleteExecuted = () => {
     console.log("Corre demon de configuraciones", configuration)
     configuration.then((opciones) => {
         opciones.forEach(option => {
-            if (option.executed && !option.repeat) {
+            if (option.executed && !option.frecuency.repeat) {
                 OptionRepository.delete(option)
             }
-            if (option.executed && option.repeat) {
+            if (option.executed && option.frecuency.repeat) {
                 option.executed = false
                 OptionRepository.update(option)
             }
