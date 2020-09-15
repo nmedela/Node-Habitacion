@@ -17,6 +17,7 @@ Proyecto consiste en:
 Hasta el momento se trae la UI desde el backend.
 
 La app está corriendo en el puerto 4000 del host 192.168.0.99
+Antiguamente utilizaba la interfaz de las imagenes que están a continuación. Hoy es utiliza https://github.com/nmedela/frontend_react_para_habitacion
 Se tiene la interfaz  en html de:
 
 Control de luces-  ../light
