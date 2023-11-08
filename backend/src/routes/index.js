@@ -9,13 +9,14 @@ const soundRouter = require('./soundRoute')
 const tvRouter = require('./tvRoute')
 const curtainRouter = require('./curtainRoute')
 const cameraRouter = require('./cameraRoute')
-
+const notificationRouter = require('./notificationRoute')
 
 appRouter.use(cors())
 appRouter.use(bodyParser.json())
 
 appRouter.use('/light', lightRouter)
 appRouter.use('/sound', soundRouter)
+appRouter.use('/notification', notificationRouter)
 // appRouter.use('/tv', tvRouter)
 // appRouter.use('/curtain', curtainRouter)
 // appRouter.use('/camera', cameraRouter)

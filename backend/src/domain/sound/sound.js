@@ -8,12 +8,12 @@ class Sound {
     constructor() {
         this.id = null
         this.gpio = null
-        this.gain = 0x05
+        this.gain = 0x09
         this.bass = 0x0d
-        this.treble = 0x0a
+        this.treble = 0x09
         this.balanceR = 0x00
         this.balanceL = 0x00
-        this.volumen = 0x1f
+        this.volumen = 0x08
         this.power = 0x00
         this.input = 0x02
         this.mute = OFF
