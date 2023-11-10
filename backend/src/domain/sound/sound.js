@@ -1,6 +1,6 @@
 const spawn = require("child_process").spawn;
 const exec = require('child_process').exec;
-const { volumen, balanceL, balanceR, bass, treble, input, power, gain } = require('./parametersSound');
+//const { volumen, balanceL, balanceR, bass, treble, input, power, gain } = require('./parametersSound');
 
 const ON = true
 const OFF = false
