@@ -1,7 +1,14 @@
 const mosca= require('mosca')
-
+var settings = {
+    
+  };
 const broker = new mosca.Server({
-    port: 9000
+    port:9000,
+    http: {
+        port: 9001,
+        bundle: true,
+        static: './'
+      }
 })
 
 broker.on('clientConnected', (client)=>{
